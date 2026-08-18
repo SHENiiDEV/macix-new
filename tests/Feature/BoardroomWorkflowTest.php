@@ -19,22 +19,52 @@ class BoardroomWorkflowTest extends TestCase
         Mail::fake();
 
         $response = $this->post('/register', [
-            'name' => 'Alexander Vance',
+            'first_name' => 'Alexander',
+            'last_name' => 'Vance',
             'email' => 'alex@vancecap.co.uk',
             'password' => 'Password123!',
             'password_confirmation' => 'Password123!',
+            'phone' => '+44 20 7946 0912',
+            'date_of_birth' => '1988-05-14',
+            'address_street' => '100 Bishopsgate, Suite 24',
+            'address_city' => 'London',
+            'address_country' => 'United Kingdom',
+            'address_postcode' => 'EC2N 4AG',
+            'terms' => true,
             'company_name' => 'Vance Capital Partners',
             'vat_number' => 'GB987654321',
-            'billing_address' => '100 Bishopsgate, London, EC2N 4AG, UK',
-            'phone' => '+44 20 7946 0912',
         ]);
 
         $response->assertRedirect('/dashboard');
         $this->assertDatabaseHas('users', [
             'email' => 'alex@vancecap.co.uk',
-            'company_name' => 'Vance Capital Partners',
+            'first_name' => 'Alexander',
+            'last_name' => 'Vance',
+            'name' => 'Alexander Vance',
+            'address_city' => 'London',
+            'address_country' => 'United Kingdom',
             'wallet_balance' => 0.00,
         ]);
+    }
+
+    public function test_sanctioned_country_registration_is_blocked()
+    {
+        $response = $this->post('/register', [
+            'first_name' => 'Test',
+            'last_name' => 'User',
+            'email' => 'test@sanctioned.com',
+            'password' => 'Password123!',
+            'password_confirmation' => 'Password123!',
+            'phone' => '+123456789',
+            'date_of_birth' => '1990-01-01',
+            'address_street' => 'Street 1',
+            'address_city' => 'City',
+            'address_country' => 'Russia',
+            'address_postcode' => '12345',
+            'terms' => true,
+        ]);
+
+        $response->assertSessionHasErrors(['address_country']);
     }
 
     public function test_user_can_top_up_wallet_and_receive_invoice()

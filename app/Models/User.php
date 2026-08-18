@@ -14,12 +14,20 @@ class User extends Authenticatable
 
     protected $fillable = [
         'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'date_of_birth',
         'company_name',
         'vat_number',
+        'address_street',
+        'address_city',
+        'address_country',
+        'address_postcode',
         'billing_address',
         'phone',
+        'terms_agreed_at',
         'wallet_balance',
         'is_admin',
     ];
@@ -34,6 +42,8 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'date_of_birth' => 'date',
+            'terms_agreed_at' => 'datetime',
             'wallet_balance' => 'decimal:2',
             'is_admin' => 'boolean',
         ];
