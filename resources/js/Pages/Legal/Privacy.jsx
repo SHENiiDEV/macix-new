@@ -33,7 +33,7 @@ export default function Privacy() {
                         <span>Zero Model Training &amp; Executive Isolation Guarantee</span>
                     </div>
                     <p className="text-xs text-slate-300 leading-relaxed">
-                        DRAYBOND LIMITED guarantees that your proprietary founder briefs, financial metrics, cap table arrangements, and internal disputes are <strong>NEVER used to train, fine-tune, or improve</strong> public or third-party AI models. All API communications with DeepSeek inference endpoints operate strictly with zero data-retention for training purposes.
+                        DRAYBOND LIMITED guarantees that your proprietary founder briefs, financial metrics, cap table arrangements, and internal disputes are <strong>NEVER used to train, fine-tune, or improve</strong> public or third-party AI models. All API communications with enterprise inference endpoints operate strictly with zero data-retention for training purposes.
                     </p>
                 </div>
 

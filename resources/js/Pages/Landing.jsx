@@ -94,7 +94,7 @@ export default function Landing({ auth }) {
             features: [
                 'All Starter Board Capabilities',
                 'Custom Advisor Personas (e.g. M&A Specialist, Growth CMO)',
-                'Priority DeepSeek Reasoner Orchestration',
+                'Priority Multi-Perspective Reasoner Orchestration',
                 '30-Day Chronological Execution Action Plan',
                 'Fiduciary & Cap Table Impact Analysis',
                 'Direct PDF & Shareable Boardroom Link',

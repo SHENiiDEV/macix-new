@@ -137,7 +137,7 @@ export default function Dashboard({ auth, recentSessions, stats }) {
                             </span>
                         </div>
                         <div className="pt-3 border-t border-slate-800/80 text-xs text-slate-400">
-                            <span>DeepSeek Multi-Avatar Engine</span>
+                            <span>Executive Multi-Avatar AI Engine</span>
                         </div>
                     </div>
 

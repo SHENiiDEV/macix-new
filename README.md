@@ -20,7 +20,7 @@ All financial, invoicing, and legal infrastructure is strictly branded under:
 
 - **Prepaid Internal Wallet**: High-ticket prepaid architecture in EUR (€) eliminating chargebacks.
 - **Official VAT PDF Invoices**: Auto-generated A4 invoices bearing the `PAID & VERIFIED` official stamp.
-- **DeepSeek AI Multi-Avatar Engine**: Parallel executive persona reasoning with live dynamic deliberation status.
+- **Macix AI Multi-Avatar Engine**: Parallel executive persona reasoning with live dynamic deliberation status.
 - **Board Minutes Export**: Official downloadable PDF reports with executive summaries and action plans.
 - **Transactional B2B Emails**: Namecheap Private Email SMTP integration with auto-attached PDF invoices.
 - **UK Legal Compliance**: Full `/terms`, `/privacy` (UK GDPR Zero-Training Guarantee), and `/refund` policies.
@@ -33,7 +33,7 @@ All financial, invoicing, and legal infrastructure is strictly branded under:
 - **Frontend**: React.js, Inertia.js, Tailwind CSS, Lucide Icons, Magic UI
 - **Database**: SQLite
 - **PDF Engine**: `barryvdh/laravel-dompdf`
-- **AI Inference**: DeepSeek API (`deepseek-v4-flash` / `deepseek-chat`)
+- **AI Inference**: High-Performance Multi-Perspective Reasoning Engine
 - **Mail Transport**: Namecheap Private Email (`mail.privateemail.com`, SSL 465)
 
 ---
