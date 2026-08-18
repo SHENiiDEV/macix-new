@@ -151,14 +151,16 @@ class BoardroomController extends Controller
     /**
      * View Completed Resolution
      */
-    public function resolution(Request $request, int $id): Response
+    public function resolution(Request $request, int $id): Response|\Illuminate\Http\RedirectResponse
     {
         $session = BoardSession::with('resolution')
             ->where('user_id', $request->user()->id)
             ->findOrFail($id);
 
         if (!$session->resolution) {
-            return redirect()->route('board.deliberating', ['id' => $session->id]);
+            // Auto-complete deliberation if previously interrupted
+            $this->boardService->deliberate($session);
+            $session->refresh()->load('resolution');
         }
 
         return Inertia::render('Boardroom/Resolution', [
