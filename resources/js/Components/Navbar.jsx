@@ -14,9 +14,12 @@ import {
     Scale
 } from 'lucide-react';
 import TopUpModal from './TopUpModal';
+import CurrencyDropdown from './CurrencyDropdown';
+import { useCurrency } from '../Context/CurrencyContext';
 
 export default function Navbar() {
     const { auth, company } = usePage().props;
+    const { formatPrice } = useCurrency();
     const [isTopUpOpen, setIsTopUpOpen] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
@@ -102,8 +105,11 @@ export default function Navbar() {
                     </div>
 
                     {/* Right Actions */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2.5">
                         
+                        {/* Currency Selector */}
+                        <CurrencyDropdown />
+
                         {auth?.user ? (
                             <>
                                 {/* Wallet Balance Pill */}
@@ -113,7 +119,7 @@ export default function Navbar() {
                                         className="px-3 py-1 text-xs font-mono font-bold text-slate-200 hover:text-white transition-colors"
                                     >
                                         <span className="text-[10px] text-slate-400 uppercase font-sans font-semibold mr-1.5">Wallet:</span>
-                                        <span className="text-amber-400 font-extrabold">€{Number(walletBalance).toFixed(2)}</span>
+                                        <span className="text-amber-400 font-extrabold">{formatPrice(walletBalance, 2)}</span>
                                     </Link>
                                     <button
                                         onClick={() => setIsTopUpOpen(true)}

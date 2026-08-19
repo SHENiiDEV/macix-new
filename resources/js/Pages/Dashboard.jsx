@@ -17,8 +17,10 @@ import {
 } from 'lucide-react';
 import ExecutiveLayout from '../Layouts/ExecutiveLayout';
 import TopUpModal from '../Components/TopUpModal';
+import { useCurrency } from '../Context/CurrencyContext';
 
 export default function Dashboard({ auth, recentSessions, stats }) {
+    const { formatPrice } = useCurrency();
     const [isTopUpOpen, setIsTopUpOpen] = useState(false);
 
     return (
@@ -52,7 +54,7 @@ export default function Dashboard({ auth, recentSessions, stats }) {
                                 className="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl text-xs font-bold text-slate-200 transition-all flex items-center gap-2 cursor-pointer"
                             >
                                 <CreditCard className="w-4 h-4 text-sky-400" />
-                                <span>Add Funds (€{Number(auth.user.wallet_balance).toFixed(2)})</span>
+                                <span>Add Funds ({formatPrice(auth.user.wallet_balance, 2)})</span>
                             </button>
 
                             <Link
@@ -79,7 +81,7 @@ export default function Dashboard({ auth, recentSessions, stats }) {
                         </div>
                         <div className="my-4">
                             <div className="text-3xl font-extrabold text-white font-mono">
-                                €{Number(stats.wallet_balance).toFixed(2)}
+                                {formatPrice(stats.wallet_balance, 2)}
                             </div>
                             <span className="text-[11px] text-slate-400">B2B Prepaid Balance</span>
                         </div>

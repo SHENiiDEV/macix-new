@@ -15,9 +15,11 @@ import {
 } from 'lucide-react';
 import ExecutiveLayout from '../../Layouts/ExecutiveLayout';
 import TopUpModal from '../../Components/TopUpModal';
+import { useCurrency } from '../../Context/CurrencyContext';
 
 export default function BillingIndex({ transactions, walletBalance }) {
     const { auth, company } = usePage().props;
+    const { formatPrice } = useCurrency();
     const [isTopUpOpen, setIsTopUpOpen] = useState(false);
 
     // Profile & Billing Address Form
@@ -83,10 +85,10 @@ export default function BillingIndex({ transactions, walletBalance }) {
                                 </span>
                             </div>
                             <div className="text-4xl sm:text-5xl font-extrabold text-white font-mono mt-3">
-                                €{Number(walletBalance).toFixed(2)}
+                                {formatPrice(walletBalance, 2)}
                             </div>
                             <p className="text-xs text-slate-300 mt-2">
-                                Funds are immediately available to convene Starter (€149), Pro (€499), or Enterprise (€1,499) board sessions.
+                                Funds are immediately available to convene Starter ({formatPrice(149)}), Pro ({formatPrice(499)}), or Enterprise ({formatPrice(1499)}) board sessions.
                             </p>
                         </div>
 

@@ -19,8 +19,10 @@ import {
 } from 'lucide-react';
 import ExecutiveLayout from '../../Layouts/ExecutiveLayout';
 import TopUpModal from '../../Components/TopUpModal';
+import { useCurrency } from '../../Context/CurrencyContext';
 
 export default function NewSession({ initialTier = 'starter', walletBalance = 0 }) {
+    const { formatPrice } = useCurrency();
     const [selectedTier, setSelectedTier] = useState(initialTier);
     const [isTopUpOpen, setIsTopUpOpen] = useState(false);
     const [customAdvisor1, setCustomAdvisor1] = useState('M&A & Restructuring Specialist');
@@ -128,7 +130,7 @@ export default function NewSession({ initialTier = 'starter', walletBalance = 0 
                         <div>
                             <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Wallet Balance</div>
                             <div className="text-sm font-extrabold text-white font-mono">
-                                €{Number(walletBalance).toFixed(2)}
+                                {formatPrice(walletBalance, 2)}
                             </div>
                         </div>
                     </div>
@@ -157,7 +159,7 @@ export default function NewSession({ initialTier = 'starter', walletBalance = 0 
                             >
                                 <div className="flex justify-between items-start">
                                     <span className="text-sm font-bold text-white">Starter Board</span>
-                                    <span className="text-base font-extrabold text-amber-400 font-mono">€149</span>
+                                    <span className="text-base font-extrabold text-amber-400 font-mono">{formatPrice(149)}</span>
                                 </div>
                                 <p className="text-[11px] text-slate-400 mt-2">
                                     Single strategic dilemma analyzed by the standard 4-advisor board + PDF Board Minutes.
@@ -178,7 +180,7 @@ export default function NewSession({ initialTier = 'starter', walletBalance = 0 
                                 </div>
                                 <div className="flex justify-between items-start">
                                     <span className="text-sm font-bold text-white">Pro Board</span>
-                                    <span className="text-base font-extrabold text-amber-400 font-mono">€499</span>
+                                    <span className="text-base font-extrabold text-amber-400 font-mono">{formatPrice(499)}</span>
                                 </div>
                                 <p className="text-[11px] text-slate-400 mt-2">
                                     Custom advisor personas + deep fiduciary stress-testing + 30-Day Action Roadmap.
@@ -196,7 +198,7 @@ export default function NewSession({ initialTier = 'starter', walletBalance = 0 
                             >
                                 <div className="flex justify-between items-start">
                                     <span className="text-sm font-bold text-white">Enterprise Retainer</span>
-                                    <span className="text-base font-extrabold text-amber-400 font-mono">€1,499</span>
+                                    <span className="text-base font-extrabold text-amber-400 font-mono">{formatPrice(1499)}</span>
                                 </div>
                                 <p className="text-[11px] text-slate-400 mt-2">
                                     10 sessions / month + persistent decision history & financial statement ingestion.
@@ -348,7 +350,7 @@ export default function NewSession({ initialTier = 'starter', walletBalance = 0 
                                 ) : (
                                     <div className="flex items-center gap-2">
                                         <Crown className="w-4 h-4" />
-                                        <span>Pay €{currentCost.toFixed(0)} &amp; Convene Board</span>
+                                        <span>Pay {formatPrice(currentCost)} &amp; Convene Board</span>
                                     </div>
                                 )}
                             </button>
@@ -359,7 +361,7 @@ export default function NewSession({ initialTier = 'starter', walletBalance = 0 
                                 className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 text-slate-950 font-black text-sm rounded-xl shadow-xl shadow-amber-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer"
                             >
                                 <CreditCard className="w-4 h-4" />
-                                <span>Top Up Wallet to Convene (€{currentCost.toFixed(0)})</span>
+                                <span>Top Up Wallet to Convene ({formatPrice(currentCost)})</span>
                             </button>
                         )}
                     </div>

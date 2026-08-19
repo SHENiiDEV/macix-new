@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useForm, usePage } from '@inertiajs/react';
 import { X, CreditCard, ShieldCheck, Zap, Building2, CheckCircle2, Lock } from 'lucide-react';
+import { useCurrency } from '../Context/CurrencyContext';
 
 export default function TopUpModal({ isOpen, onClose, defaultAmount = 499 }) {
     if (!isOpen) return null;
 
     const { company } = usePage().props;
+    const { formatPrice } = useCurrency();
     const [selectedPreset, setSelectedPreset] = useState(defaultAmount);
     const [customAmount, setCustomAmount] = useState('');
     const [cardName, setCardName] = useState('Executive Cardholder');
@@ -100,7 +102,7 @@ export default function TopUpModal({ isOpen, onClose, defaultAmount = 499 }) {
                                             Popular
                                         </span>
                                     )}
-                                    <div className="text-base font-extrabold text-white">€{preset.amount}</div>
+                                    <div className="text-base font-extrabold text-white">{formatPrice(preset.amount)}</div>
                                     <div className="text-xs font-medium text-amber-400/90 mt-0.5">{preset.label}</div>
                                     <div className="text-[10px] text-slate-400 leading-tight mt-1">{preset.desc}</div>
                                 </button>

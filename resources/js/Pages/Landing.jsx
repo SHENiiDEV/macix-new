@@ -18,8 +18,10 @@ import {
     Lock
 } from 'lucide-react';
 import ExecutiveLayout from '../Layouts/ExecutiveLayout';
+import { useCurrency } from '../Context/CurrencyContext';
 
 export default function Landing({ auth }) {
+    const { formatPrice } = useCurrency();
     const [selectedTab, setSelectedTab] = useState('investor');
 
     const advisors = [
@@ -302,7 +304,7 @@ export default function Landing({ auth }) {
                                 <h3 className="text-xl font-bold text-white">{tier.name}</h3>
                                 <p className="text-xs text-slate-400 mt-2 min-h-[36px]">{tier.desc}</p>
                                 <div className="mt-5 flex items-baseline gap-1">
-                                    <span className="text-4xl font-extrabold text-white">€{tier.price}</span>
+                                    <span className="text-4xl font-extrabold text-white">{formatPrice(tier.price)}</span>
                                     <span className="text-xs text-slate-400 font-mono">/ {tier.period}</span>
                                 </div>
                             </div>
