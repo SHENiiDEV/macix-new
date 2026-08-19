@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import ExecutiveLayout from '../../Layouts/ExecutiveLayout';
 import { ALLOWED_COUNTRIES } from '../../constants/countries';
+import DatePicker from '../../Components/DatePicker';
 
 export default function Register() {
     const { data, setData, post, processing, errors } = useForm({
@@ -102,17 +103,12 @@ export default function Register() {
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label className="text-slate-300 font-semibold block mb-1.5">Date of Birth *</label>
-                                    <div className="relative">
-                                        <input
-                                            type="date"
-                                            required
-                                            max={new Date().toISOString().split("T")[0]}
-                                            value={data.date_of_birth}
-                                            onChange={(e) => setData('date_of_birth', e.target.value)}
-                                            className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-amber-500 text-xs font-mono"
-                                        />
-                                    </div>
-                                    {errors.date_of_birth && <p className="text-rose-400 text-xs mt-1">{errors.date_of_birth}</p>}
+                                    <DatePicker
+                                        value={data.date_of_birth}
+                                        onChange={(val) => setData('date_of_birth', val)}
+                                        error={errors.date_of_birth}
+                                        placeholder="Select Date of Birth"
+                                    />
                                 </div>
 
                                 <div>
