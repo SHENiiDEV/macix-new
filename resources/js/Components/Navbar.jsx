@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, usePage, router } from '@inertiajs/react';
 import { 
     LayoutDashboard, 
@@ -11,7 +11,11 @@ import {
     User, 
     Building2, 
     ChevronDown,
-    Scale
+    Scale,
+    Menu,
+    X,
+    Lock,
+    Globe
 } from 'lucide-react';
 import TopUpModal from './TopUpModal';
 import CurrencyDropdown from './CurrencyDropdown';
@@ -19,11 +23,25 @@ import { useCurrency } from '../Context/CurrencyContext';
 
 export default function Navbar() {
     const { auth, company } = usePage().props;
-    const { formatPrice } = useCurrency();
+    const { formatPrice, currency, setCurrency, currentCurrency, currencies } = useCurrency();
     const [isTopUpOpen, setIsTopUpOpen] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    // Prevent body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isMobileMenuOpen]);
 
     const handleLogout = () => {
+        setIsMobileMenuOpen(false);
         router.post('/logout');
     };
 
@@ -50,7 +68,7 @@ export default function Navbar() {
                             </div>
                         </Link>
 
-                        {/* Main Nav Links (when authenticated) */}
+                        {/* Main Nav Links (Desktop) */}
                         {auth?.user && (
                             <nav className="hidden md:flex items-center gap-1 pl-4 border-l border-slate-800">
                                 <Link
@@ -104,8 +122,8 @@ export default function Navbar() {
                         )}
                     </div>
 
-                    {/* Right Actions */}
-                    <div className="flex items-center gap-2.5">
+                    {/* Right Actions (Desktop) */}
+                    <div className="hidden md:flex items-center gap-2.5">
                         
                         {/* Currency Selector */}
                         <CurrencyDropdown />
@@ -134,7 +152,7 @@ export default function Navbar() {
                                 <div className="relative">
                                     <button
                                         onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                                        className="flex items-center gap-2 p-1.5 pl-2 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 text-slate-300 transition-all text-xs"
+                                        className="flex items-center gap-2 p-1.5 pl-2 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 text-slate-300 transition-all text-xs cursor-pointer"
                                     >
                                         <div className="w-6 h-6 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-amber-400 font-bold">
                                             {auth.user.name.charAt(0).toUpperCase()}
@@ -189,7 +207,7 @@ export default function Navbar() {
 
                                             <button
                                                 onClick={handleLogout}
-                                                className="w-full flex items-center gap-2 px-3.5 py-2 text-rose-400 hover:bg-rose-500/10 transition-colors text-left"
+                                                className="w-full flex items-center gap-2 px-3.5 py-2 text-rose-400 hover:bg-rose-500/10 transition-colors text-left cursor-pointer"
                                             >
                                                 <LogOut className="w-3.5 h-3.5" />
                                                 <span>Sign Out</span>
@@ -217,8 +235,232 @@ export default function Navbar() {
 
                     </div>
 
+                    {/* Mobile Hamburger Button */}
+                    <div className="flex items-center gap-2 md:hidden">
+                        <CurrencyDropdown />
+
+                        <button
+                            type="button"
+                            onClick={() => setIsMobileMenuOpen(true)}
+                            className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                            aria-label="Open mobile menu"
+                        >
+                            <Menu className="w-5 h-5" />
+                        </button>
+                    </div>
+
                 </div>
             </header>
+
+            {/* Mobile Slide-Out Drawer (From the Right) */}
+            {isMobileMenuOpen && (
+                <div className="fixed inset-0 z-50 md:hidden animate-fadeIn">
+                    
+                    {/* Backdrop */}
+                    <div 
+                        className="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                    />
+
+                    {/* Drawer Content */}
+                    <div className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-[#0b101c] border-l border-slate-800 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto animate-slideLeft z-50">
+                        
+                        <div className="space-y-6">
+                            
+                            {/* Drawer Header */}
+                            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-7 h-7 rounded-lg bg-amber-500 flex items-center justify-center text-slate-950 font-black text-xs">
+                                        M
+                                    </div>
+                                    <span className="font-extrabold text-white text-sm">MACIX AI</span>
+                                </div>
+                                <button
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/80 transition-colors"
+                                    aria-label="Close menu"
+                                >
+                                    <X className="w-5 h-5" />
+                                </button>
+                            </div>
+
+                            {/* User Profile Card (if authenticated) */}
+                            {auth?.user ? (
+                                <div className="p-4 rounded-2xl bg-gradient-to-br from-slate-900 to-[#111728] border border-slate-800 space-y-3">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold text-sm">
+                                            {auth.user.name.charAt(0).toUpperCase()}
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                            <p className="font-bold text-white text-xs truncate">{auth.user.name}</p>
+                                            <p className="text-[11px] text-slate-400 truncate">{auth.user.email}</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Mobile Wallet Balance Bar */}
+                                    <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                                        <div>
+                                            <span className="text-[10px] text-slate-400 uppercase font-semibold block">Wallet Balance:</span>
+                                            <span className="text-sm font-extrabold text-amber-400 font-mono">{formatPrice(walletBalance, 2)}</span>
+                                        </div>
+                                        <button
+                                            onClick={() => {
+                                                setIsMobileMenuOpen(false);
+                                                setIsTopUpOpen(true);
+                                            }}
+                                            className="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 text-[11px] font-extrabold rounded-lg transition-all flex items-center gap-1 shadow-sm shadow-amber-500/20"
+                                        >
+                                            <Plus className="w-3 h-3 stroke-[3]" />
+                                            <span>Top Up</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            ) : null}
+
+                            {/* Navigation Links */}
+                            <div className="space-y-1 text-xs font-semibold">
+                                {auth?.user ? (
+                                    <>
+                                        <Link
+                                            href="/dashboard"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl transition-colors ${
+                                                window.location.pathname === '/dashboard' 
+                                                    ? 'bg-amber-500/10 text-amber-300 font-bold border border-amber-500/20' 
+                                                    : 'text-slate-300 hover:bg-slate-900 hover:text-white'
+                                            }`}
+                                        >
+                                            <LayoutDashboard className="w-4 h-4 text-amber-400" />
+                                            <span>Executive Dashboard</span>
+                                        </Link>
+
+                                        <Link
+                                            href="/board/new"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl transition-colors ${
+                                                window.location.pathname === '/board/new' 
+                                                    ? 'bg-amber-500/10 text-amber-300 font-bold border border-amber-500/20' 
+                                                    : 'text-slate-300 hover:bg-slate-900 hover:text-white'
+                                            }`}
+                                        >
+                                            <Sparkles className="w-4 h-4 text-amber-400" />
+                                            <span>Convene New Board</span>
+                                        </Link>
+
+                                        <Link
+                                            href="/board/history"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl transition-colors ${
+                                                window.location.pathname === '/board/history' 
+                                                    ? 'bg-amber-500/10 text-amber-300 font-bold border border-amber-500/20' 
+                                                    : 'text-slate-300 hover:bg-slate-900 hover:text-white'
+                                            }`}
+                                        >
+                                            <History className="w-4 h-4 text-amber-400" />
+                                            <span>Minutes Archive</span>
+                                        </Link>
+
+                                        <Link
+                                            href="/billing"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl transition-colors ${
+                                                window.location.pathname === '/billing' 
+                                                    ? 'bg-amber-500/10 text-amber-300 font-bold border border-amber-500/20' 
+                                                    : 'text-slate-300 hover:bg-slate-900 hover:text-white'
+                                            }`}
+                                        >
+                                            <CreditCard className="w-4 h-4 text-sky-400" />
+                                            <span>Billing &amp; Invoices</span>
+                                        </Link>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Link
+                                            href="/"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-300 hover:bg-slate-900 hover:text-white"
+                                        >
+                                            <Sparkles className="w-4 h-4 text-amber-400" />
+                                            <span>Board Overview</span>
+                                        </Link>
+
+                                        <Link
+                                            href="/login"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-300 hover:bg-slate-900 hover:text-white"
+                                        >
+                                            <User className="w-4 h-4 text-amber-400" />
+                                            <span>Sign In</span>
+                                        </Link>
+
+                                        <div className="pt-2">
+                                            <Link
+                                                href="/register"
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                className="w-full py-3 px-4 bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 font-extrabold text-xs rounded-xl shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2"
+                                            >
+                                                <span>Convene Your Board</span>
+                                            </Link>
+                                        </div>
+                                    </>
+                                )}
+
+                                {/* Legal Section in Drawer */}
+                                <div className="pt-4 border-t border-slate-800/80 space-y-1">
+                                    <div className="px-3.5 py-1 text-[10px] uppercase font-bold text-slate-500 tracking-wider">
+                                        Compliance &amp; Legal
+                                    </div>
+                                    <Link
+                                        href="/terms"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-900/60"
+                                    >
+                                        <Scale className="w-3.5 h-3.5" />
+                                        <span>Terms of Service</span>
+                                    </Link>
+                                    <Link
+                                        href="/privacy"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-900/60"
+                                    >
+                                        <Lock className="w-3.5 h-3.5" />
+                                        <span>Privacy &amp; GDPR</span>
+                                    </Link>
+                                    <Link
+                                        href="/refund"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-900/60"
+                                    >
+                                        <Shield className="w-3.5 h-3.5" />
+                                        <span>Refund Policy</span>
+                                    </Link>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        {/* Drawer Footer */}
+                        <div className="pt-6 border-t border-slate-800 space-y-3">
+                            {auth?.user && (
+                                <button
+                                    onClick={handleLogout}
+                                    className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-400 rounded-xl font-bold text-xs transition-colors cursor-pointer"
+                                >
+                                    <LogOut className="w-4 h-4" />
+                                    <span>Sign Out</span>
+                                </button>
+                            )}
+
+                            <div className="text-[10px] text-slate-500 text-center font-mono leading-tight">
+                                {company?.name || 'INCHWARD LIMITED'}<br />
+                                UK Co. No. {company?.number || '16021412'}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            )}
 
             {/* TopUp Modal */}
             <TopUpModal 
