@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, usePage } from '@inertiajs/react';
-import { ShieldCheck, CheckCircle2, AlertCircle, X, Scale, Lock, Mail, Building2 } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, AlertCircle, X, Scale, Lock, Mail, Building2, Clock } from 'lucide-react';
 import Navbar from '../Components/Navbar';
 import CookieConsent from '../Components/CookieConsent';
 import OfflineBanner from '../Components/OfflineBanner';
