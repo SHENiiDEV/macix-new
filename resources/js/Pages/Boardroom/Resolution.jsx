@@ -74,7 +74,16 @@ export default function Resolution({ session, resolution }) {
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-3 shrink-0">
+                    <div className="flex flex-wrap items-center gap-3 shrink-0">
+                        <a
+                            href={`/wallet/invoice/${session.id}`}
+                            className="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl text-xs font-semibold text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
+                            title="Download Official VAT Invoice"
+                        >
+                            <FileText className="w-4 h-4 text-sky-400" />
+                            <span>Download Tax Invoice (PDF)</span>
+                        </a>
+
                         <a
                             href={`/board/${session.id}/export-minutes`}
                             className="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-extrabold text-xs rounded-xl shadow-lg shadow-amber-500/20 transition-all flex items-center gap-2 cursor-pointer"

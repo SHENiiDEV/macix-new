@@ -204,21 +204,30 @@ export default function Dashboard({ auth, recentSessions, stats }) {
                                         </p>
                                     </div>
 
-                                    <div className="flex items-center gap-2.5 shrink-0">
+                                    <div className="flex items-center gap-2 shrink-0">
+                                        <a
+                                            href={`/wallet/invoice/${session.id}`}
+                                            className="px-2.5 py-2 bg-slate-900 hover:bg-slate-800 border border-slate-700/80 rounded-xl text-xs font-semibold text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
+                                            title="Download Official VAT Invoice"
+                                        >
+                                            <FileText className="w-3.5 h-3.5 text-sky-400" />
+                                            <span>Invoice (PDF)</span>
+                                        </a>
+
                                         <a
                                             href={`/board/${session.id}/export-minutes`}
-                                            className="px-3 py-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl text-xs font-semibold text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
+                                            className="px-2.5 py-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl text-xs font-semibold text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
                                             title="Export Official PDF Minutes"
                                         >
                                             <Download className="w-3.5 h-3.5 text-amber-400" />
-                                            <span>PDF Minutes</span>
+                                            <span>Minutes (PDF)</span>
                                         </a>
 
                                         <Link
                                             href={`/board/${session.id}/resolution`}
-                                            className="px-4 py-2 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 rounded-xl text-xs font-bold text-amber-300 transition-colors flex items-center gap-1.5"
+                                            className="px-3.5 py-2 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 rounded-xl text-xs font-bold text-amber-300 transition-colors flex items-center gap-1.5"
                                         >
-                                            <span>Open Resolution</span>
+                                            <span>Resolution</span>
                                             <ArrowRight className="w-3.5 h-3.5" />
                                         </Link>
                                     </div>

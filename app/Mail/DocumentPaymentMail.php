@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\BoardSession;
 use App\Models\Invoice;
 use App\Models\Transaction;
 use App\Models\User;
@@ -14,34 +15,40 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class WalletTopUpMail extends Mailable
+class DocumentPaymentMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public function __construct(
         public User $user,
-        public Transaction $transaction,
-        public Invoice $invoice
+        public ?BoardSession $session,
+        public ?Invoice $invoice,
+        public ?Transaction $transaction
     ) {
     }
 
     public function envelope(): Envelope
     {
+        $amount = $this->transaction->amount_eur ?? $this->invoice->total_eur ?? 149;
         return new Envelope(
             from: new Address(config('mail.from.address', 'info@voltoria.co.uk'), config('mail.from.name', 'Macix AI | INCHWARD LIMITED')),
-            subject: 'Macix AI — Wallet Top-Up Receipt (€' . number_format((float)$this->transaction->amount_eur, 2) . ')',
+            subject: 'Macix AI — Official Invoice & Board Resolution Unlocked (€' . number_format((float)$amount, 2) . ')',
         );
     }
 
     public function content(): Content
     {
         return new Content(
-            view: 'emails.wallet_topup',
+            view: 'emails.document_payment',
         );
     }
 
     public function attachments(): array
     {
+        if (!$this->invoice) {
+            return [];
+        }
+
         $pdf = Pdf::loadView('pdf.wallet_invoice', [
             'invoice' => $this->invoice,
             'user' => $this->user,

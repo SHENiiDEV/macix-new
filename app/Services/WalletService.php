@@ -92,9 +92,9 @@ class WalletService
     }
 
     /**
-     * Debit wallet balance for Board Session with strict service name
+     * Debit wallet balance for Board Session with strict service name and official invoice
      */
-    public function chargeForSession(User $user, string $tier, float $costEur, string $briefTitle = ''): Transaction
+    public function chargeForSession(User $user, string $tier, float $costEur, string $briefTitle = ''): array
     {
         return DB::transaction(function () use ($user, $tier, $costEur, $briefTitle) {
             $user = User::where('id', $user->id)->lockForUpdate()->first();
@@ -132,9 +132,34 @@ class WalletService
                 ],
             ]);
 
+            // Generate unique invoice number
+            $invoiceNumber = 'INV-' . date('Y') . '-' . str_pad(Invoice::count() + 1042, 5, '0', STR_PAD_LEFT);
+
+            // Create Invoice
+            $invoice = Invoice::create([
+                'user_id' => $user->id,
+                'transaction_id' => $transaction->id,
+                'invoice_number' => $invoiceNumber,
+                'customer_name' => $user->name,
+                'customer_company' => $user->company_name ?: $user->name,
+                'customer_email' => $user->email,
+                'customer_vat' => $user->vat_number,
+                'customer_address' => $user->billing_address,
+                'subtotal_eur' => $costEur,
+                'vat_rate_percent' => 0.00,
+                'vat_amount_eur' => 0.00,
+                'total_eur' => $costEur,
+                'service_name' => $serviceName,
+                'status' => 'PAID',
+                'issued_at' => now(),
+            ]);
+
             $user->update(['wallet_balance' => $balanceAfter]);
 
-            return $transaction;
+            return [
+                'transaction' => $transaction,
+                'invoice' => $invoice,
+            ];
         });
     }
 }

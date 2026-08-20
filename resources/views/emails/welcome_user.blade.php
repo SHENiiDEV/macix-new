@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallet Top-Up Confirmation & Receipt — Macix AI</title>
+    <title>Welcome to Macix AI — Your Personal Board of AI Advisors</title>
     <style>
         body {
             margin: 0;
@@ -18,6 +18,9 @@
         }
         td {
             padding: 0;
+        }
+        img {
+            border: 0;
         }
         .wrapper {
             width: 100%;
@@ -65,51 +68,24 @@
             font-weight: 800;
             margin: 0 0 16px 0;
         }
-        .amount-box {
-            background: #0f172a;
-            border: 1px solid #059669;
+        .feature-box {
+            background: #111827;
+            border: 1px solid #1f293d;
             border-radius: 12px;
-            padding: 20px;
-            text-align: center;
+            padding: 16px 20px;
             margin: 20px 0;
         }
-        .amount {
-            font-size: 32px;
-            font-weight: 900;
-            color: #34d399;
-            font-family: 'Courier New', monospace;
+        .feature-item {
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #e2e8f0;
         }
-        .receipt-table {
-            width: 100%;
-            margin: 20px 0;
-            border-collapse: collapse;
-            font-size: 12.5px;
-        }
-        .receipt-table td {
-            padding: 8px 0;
-            border-bottom: 1px solid #1e293b;
-        }
-        .receipt-table .label {
-            color: #64748b;
-        }
-        .receipt-table .value {
-            text-align: right;
-            font-weight: bold;
-            color: #ffffff;
-            font-family: monospace;
-        }
-        .attachment-alert {
-            background-color: #0c1c2e;
-            border: 1px solid #0369a1;
-            border-radius: 10px;
-            padding: 12px 16px;
-            margin: 20px 0;
-            font-size: 12px;
-            color: #7dd3fc;
+        .feature-item:last-child {
+            margin-bottom: 0;
         }
         .btn-container {
             text-align: center;
-            margin: 28px 0 10px 0;
+            margin: 30px 0 10px 0;
         }
         .btn {
             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
@@ -146,7 +122,7 @@
                 <td class="header">
                     <div class="logo-badge">MACIX AI</div>
                     <div style="font-size: 11px; color: #94a3b8; font-family: monospace; letter-spacing: 1px; text-transform: uppercase;">
-                        Financial Clearance &bull; INCHWARD LIMITED
+                        Executive Decision Intelligence &bull; INCHWARD LIMITED
                     </div>
                 </td>
             </tr>
@@ -154,49 +130,32 @@
             <!-- Content -->
             <tr>
                 <td class="content">
-                    <h2>Funds Successfully Added to Wallet</h2>
+                    <h2>Welcome to Macix AI, {{ $user->name }}</h2>
                     <p>
-                        Dear {{ $user->name }}, your prepaid balance has been updated with instant clearance. Funds are immediately available for board deliberations.
+                        Your executive account has been established. You now have on-demand access to a virtual <strong>Board of AI Advisors</strong> designed to stress-test your strategic dilemmas across 4 specialized personas:
                     </p>
 
-                    <div class="amount-box">
-                        <div style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Amount Credited</div>
-                        <div class="amount">+€{{ number_format($transaction->amount_eur, 2) }}</div>
-                        <div style="font-size: 12px; color: #cbd5e1; margin-top: 6px;">
-                            New Available Balance: <strong style="color: #34d399; font-family: monospace;">€{{ number_format($transaction->balance_after, 2) }}</strong>
+                    <div class="feature-box">
+                        <div class="feature-item">
+                            <strong style="color: #f59e0b;">&bull; The Ruthless Investor:</strong> Capital preservation, unit economics, runway maximization, and valuation protection.
+                        </div>
+                        <div class="feature-item">
+                            <strong style="color: #38bdf8;">&bull; The Empathic Mentor:</strong> Organizational culture, leadership trust, founder mental endurance, and team morale.
+                        </div>
+                        <div class="feature-item">
+                            <strong style="color: #34d399;">&bull; The Pragmatic Operator:</strong> Operational friction, execution bottlenecks, KPI alignment, and systemic scale.
+                        </div>
+                        <div class="feature-item">
+                            <strong style="color: #f43f5e;">&bull; The Devil's Advocate:</strong> Cognitive bias breakdown, blind spots, and catastrophic downside modeling.
                         </div>
                     </div>
 
-                    <table class="receipt-table">
-                        <tr>
-                            <td class="label">Invoice Reference:</td>
-                            <td class="value">{{ $invoice->invoice_number }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Transaction Reference:</td>
-                            <td class="value">{{ $transaction->reference }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Service Particulars:</td>
-                            <td class="value" style="font-family: inherit;">{{ $transaction->service_name }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Cleared Date:</td>
-                            <td class="value">{{ $transaction->created_at->format('d M Y, H:i') }} UTC</td>
-                        </tr>
-                        <tr>
-                            <td class="label">VAT Rate (Reverse Charge):</td>
-                            <td class="value">0.00%</td>
-                        </tr>
-                    </table>
-
-                    <div class="attachment-alert">
-                        <strong>📄 Official PDF Tax Invoice Attached:</strong><br>
-                        Your official UK VAT Invoice (<code>Invoice_{{ $invoice->invoice_number }}.pdf</code>) issued by <strong>INCHWARD LIMITED</strong> is attached to this email.
-                    </div>
+                    <p>
+                        Every session culminates in an authoritative <strong>Chairman Synthesis</strong> and a prioritized <strong>30-day Action Roadmap</strong>, exportable to official PDF Board Minutes.
+                    </p>
 
                     <div class="btn-container">
-                        <a href="{{ url('/dashboard') }}" class="btn">Access Executive Dashboard</a>
+                        <a href="{{ url('/board/new') }}" class="btn">Convene Your First Boardroom Brief</a>
                     </div>
                 </td>
             </tr>

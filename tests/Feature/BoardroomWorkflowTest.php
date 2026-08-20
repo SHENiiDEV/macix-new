@@ -157,11 +157,21 @@ class BoardroomWorkflowTest extends TestCase
     public function test_invoice_and_minutes_pdf_downloads()
     {
         $user = User::factory()->create(['wallet_balance' => 1000.00]);
+        $otherUser = User::factory()->create(['wallet_balance' => 100.00]);
         
         // Top up to get invoice
         $this->actingAs($user)->post('/wallet/top-up', ['amount' => 499.00]);
         $invoice = Invoice::where('user_id', $user->id)->first();
 
+        // Download via /wallet/invoice/{id}
+        $walletInvResponse = $this->actingAs($user)->get("/wallet/invoice/{$invoice->id}");
+        $walletInvResponse->assertOk();
+        $this->assertEquals('application/pdf', $walletInvResponse->headers->get('Content-Type'));
+
+        // Access control: other user blocked with 403
+        $this->actingAs($otherUser)->get("/wallet/invoice/{$invoice->id}")->assertForbidden();
+
+        // Download via /invoices/{id}/download
         $invResponse = $this->actingAs($user)->get("/invoices/{$invoice->id}/download");
         $invResponse->assertOk();
         $this->assertEquals('application/pdf', $invResponse->headers->get('Content-Type'));

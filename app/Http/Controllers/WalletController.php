@@ -53,4 +53,30 @@ class WalletController extends Controller
             return back()->withErrors(['amount' => $e->getMessage()]);
         }
     }
+
+    /**
+     * Download official PDF invoice
+     */
+    public function downloadInvoice(Request $request, $id)
+    {
+        $user = $request->user();
+
+        // Find by Invoice ID, Invoice Number, or Transaction ID
+        $invoice = \App\Models\Invoice::where('id', $id)
+            ->orWhere('invoice_number', $id)
+            ->orWhere('transaction_id', $id)
+            ->firstOrFail();
+
+        abort_if($invoice->user_id !== $user->id && !$user->is_admin, 403, 'Unauthorized access to confidential B2B invoice.');
+
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.wallet_invoice', [
+            'invoice' => $invoice,
+            'user' => $user,
+            'payment' => $invoice->transaction,
+        ]);
+
+        $ref = $invoice->invoice_number ?: ('INV-' . $invoice->id);
+
+        return $pdf->download("Invoice_{$ref}.pdf");
+    }
 }

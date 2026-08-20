@@ -22,7 +22,7 @@ export default function Privacy() {
                         Privacy Policy &amp; UK GDPR Compliance
                     </h1>
                     <p className="text-xs text-slate-400 mt-1">
-                        Controller: <strong>DRAYBOND LIMITED</strong> (Company No. 16021806) &bull; United Kingdom
+                        Controller: <strong>{company?.name || 'INCHWARD LIMITED'}</strong> (Company No. {company?.number || '16021412'}) &bull; United Kingdom
                     </p>
                 </div>
 
@@ -33,7 +33,7 @@ export default function Privacy() {
                         <span>Zero Model Training &amp; Executive Isolation Guarantee</span>
                     </div>
                     <p className="text-xs text-slate-300 leading-relaxed">
-                        DRAYBOND LIMITED guarantees that your proprietary founder briefs, financial metrics, cap table arrangements, and internal disputes are <strong>NEVER used to train, fine-tune, or improve</strong> public or third-party AI models. All API communications with enterprise inference endpoints operate strictly with zero data-retention for training purposes.
+                        {company?.name || 'INCHWARD LIMITED'} guarantees that your proprietary founder briefs, financial metrics, cap table arrangements, and internal disputes are <strong>NEVER used to train, fine-tune, or improve</strong> public or third-party AI models. All API communications with enterprise inference endpoints operate strictly with zero data-retention for training purposes.
                     </p>
                 </div>
 
@@ -46,9 +46,9 @@ export default function Privacy() {
                             The data controller responsible for the processing of your personal and corporate data is:
                         </p>
                         <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl text-xs font-mono text-slate-300 space-y-1">
-                            <div><strong>Entity:</strong> DRAYBOND LIMITED (Company No. 16021806)</div>
-                            <div><strong>Registered Office:</strong> Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, United Kingdom, CF31 1JF</div>
-                            <div><strong>Privacy Desk:</strong> info@macix.co.uk</div>
+                            <div><strong>Entity:</strong> {company?.name || 'INCHWARD LIMITED'} (Company No. {company?.number || '16021412'})</div>
+                            <div><strong>Registered Office:</strong> {company?.address || 'Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, United Kingdom, CF31 1JF'}</div>
+                            <div><strong>Privacy Desk:</strong> {company?.email || 'info@voltoria.co.uk'}</div>
                         </div>
                     </section>
 

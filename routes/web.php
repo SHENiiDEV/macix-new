@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/wallet/top-up', [WalletController::class, 'topUp'])->name('wallet.topup');
 
     // Official PDF Invoices & Minutes Downloads
+    Route::get('/wallet/invoice/{id}', [WalletController::class, 'downloadInvoice'])->name('wallet.invoice');
     Route::get('/invoices/{id}/download', [InvoiceController::class, 'download'])->name('invoices.download');
     Route::get('/board/{id}/export-minutes', [InvoiceController::class, 'exportMinutes'])->name('board.exportMinutes');
 });

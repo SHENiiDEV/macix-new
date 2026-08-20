@@ -100,13 +100,15 @@ class BoardroomController extends Controller
             ]);
         }
 
-        // 1. Debit Wallet with strict service logging
-        $transaction = $this->walletService->chargeForSession(
+        // 1. Debit Wallet with strict service logging and invoice generation
+        $charge = $this->walletService->chargeForSession(
             $user,
             $tier,
             $costEur,
             $validated['title'] ?? 'Strategic Board Dilemma'
         );
+        $transaction = $charge['transaction'];
+        $invoice = $charge['invoice'];
 
         // 2. Create Board Session
         $session = BoardSession::create([
@@ -124,11 +126,11 @@ class BoardroomController extends Controller
         $resolution = $this->boardService->deliberate($session);
         $session->update(['status' => 'completed']);
 
-        // 4. Send Order Confirmation Email
+        // 4. Send Document Payment & Official Invoice Email
         try {
-            Mail::to($user->email)->send(new OrderConfirmationMail($user, $session, $resolution, $transaction));
+            Mail::to($user->email)->send(new \App\Mail\DocumentPaymentMail($user, $session, $invoice, $transaction));
         } catch (\Throwable $e) {
-            \Illuminate\Support\Facades\Log::warning("Order confirmation email error: " . $e->getMessage());
+            \Illuminate\Support\Facades\Log::warning("Document payment email error: " . $e->getMessage());
         }
 
         // Return redirect to the deliberation animation transition page or resolution directly

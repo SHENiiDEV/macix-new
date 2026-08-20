@@ -8,7 +8,7 @@ export default function Refund() {
 
     return (
         <ExecutiveLayout>
-            <Head title="B2B Refund Policy — Macix AI (DRAYBOND LIMITED)" />
+            <Head title={`B2B Refund Policy — Macix AI (${company?.name || 'INCHWARD LIMITED'})`} />
 
             <div className="max-w-4xl mx-auto space-y-8 my-6">
                 
@@ -22,7 +22,7 @@ export default function Refund() {
                         B2B Refund &amp; Cancellation Policy
                     </h1>
                     <p className="text-xs text-slate-400 mt-1">
-                        Operating Entity: <strong>DRAYBOND LIMITED</strong> &bull; Company No. 16021806 &bull; United Kingdom
+                        Operating Entity: <strong>{company?.name || 'INCHWARD LIMITED'}</strong> &bull; Company No. {company?.number || '16021412'} &bull; United Kingdom
                     </p>
                 </div>
 

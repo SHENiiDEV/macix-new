@@ -8,10 +8,10 @@ The system orchestrates multi-perspective strategic deliberations (*The Ruthless
 
 ## 🏛 Legal Entity & Corporate Invoicing
 All financial, invoicing, and legal infrastructure is strictly branded under:
-- **Operating Entity**: `DRAYBOND LIMITED`
-- **Company Number**: `16021806`
+- **Operating Entity**: `INCHWARD LIMITED`
+- **Company Number**: `16021412`
 - **Registered Address**: `Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, United Kingdom, CF31 1JF`
-- **Official Contact**: `info@macix.co.uk`
+- **Official Contact**: `info@voltoria.co.uk`
 - **Tax Policy**: 0.00% VAT Reverse Charge for B2B
 
 ---

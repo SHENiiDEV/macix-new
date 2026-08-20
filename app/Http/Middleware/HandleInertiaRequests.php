@@ -54,10 +54,10 @@ class HandleInertiaRequests extends Middleware
                 'error' => fn () => $request->session()->get('error'),
             ],
             'company' => [
-                'name' => 'DRAYBOND LIMITED',
-                'number' => '16021806',
+                'name' => 'INCHWARD LIMITED',
+                'number' => '16021412',
                 'address' => 'Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, United Kingdom, CF31 1JF',
-                'email' => 'info@macix.co.uk',
+                'email' => 'info@voltoria.co.uk',
                 'vat_note' => 'Reverse Charge / 0% VAT applicable for B2B cross-border services.',
             ],
         ];

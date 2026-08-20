@@ -282,20 +282,14 @@ export default function BillingIndex({ transactions, walletBalance }) {
                                                     </span>
                                                 </td>
                                                 <td className="py-4 px-4 text-right whitespace-nowrap">
-                                                    {txn.invoice ? (
-                                                        <a
-                                                            href={`/invoices/${txn.invoice.id}/download`}
-                                                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 rounded-lg text-xs font-semibold text-amber-400 transition-colors"
-                                                            title="Download Official VAT Invoice PDF"
-                                                        >
-                                                            <Download className="w-3 h-3" />
-                                                            <span>{txn.invoice.invoice_number}.pdf</span>
-                                                        </a>
-                                                    ) : (
-                                                        <span className="text-[11px] text-slate-500 font-mono">
-                                                            Wallet Debit
-                                                        </span>
-                                                    )}
+                                                    <a
+                                                        href={`/wallet/invoice/${txn.invoice ? txn.invoice.id : txn.id}`}
+                                                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 rounded-lg text-xs font-semibold text-amber-400 transition-colors"
+                                                        title="Download Official VAT Invoice PDF"
+                                                    >
+                                                        <Download className="w-3 h-3" />
+                                                        <span>Invoice (PDF)</span>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         );

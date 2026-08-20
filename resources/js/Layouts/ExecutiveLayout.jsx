@@ -53,7 +53,7 @@ export default function ExecutiveLayout({ children, title }) {
                 {/* Cookie Consent Floating Modal */}
                 <CookieConsent />
 
-                {/* Official B2B Footer with DRAYBOND LIMITED credentials */}
+                {/* Official B2B Footer with INCHWARD LIMITED credentials */}
                 <footer className="w-full border-t border-slate-800/80 bg-[#05070a] text-slate-400 text-xs py-10 mt-auto">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -71,8 +71,8 @@ export default function ExecutiveLayout({ children, title }) {
                                     Enterprise-grade virtual Board of AI Advisors for founders, CEOs, and executive leaders. High-ticket strategic deliberation and resolution engine.
                                 </p>
                                 <div className="text-[11px] text-slate-500 leading-relaxed font-mono">
-                                    <strong>Operating Entity:</strong> {company?.name || 'DRAYBOND LIMITED'}<br />
-                                    <strong>Company Number:</strong> {company?.number || '16021806'}<br />
+                                    <strong>Operating Entity:</strong> {company?.name || 'INCHWARD LIMITED'}<br />
+                                    <strong>Company Number:</strong> {company?.number || '16021412'}<br />
                                     <strong>Registered Address:</strong> {company?.address || 'Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, United Kingdom, CF31 1JF'}
                                 </div>
                             </div>
@@ -109,11 +109,11 @@ export default function ExecutiveLayout({ children, title }) {
                                     Dedicated B2B &amp; Invoicing Desk:
                                 </p>
                                 <a 
-                                    href="mailto:info@macix.co.uk" 
+                                    href={`mailto:${company?.email || 'info@voltoria.co.uk'}`} 
                                     className="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-mono text-xs font-semibold"
                                 >
                                     <Mail className="w-3.5 h-3.5" />
-                                    <span>info@macix.co.uk</span>
+                                    <span>{company?.email || 'info@voltoria.co.uk'}</span>
                                 </a>
                                 <div className="pt-2 text-[10px] text-slate-500">
                                     Invoices delivered with 0% Reverse Charge VAT automatically upon payment clearance.
@@ -123,7 +123,7 @@ export default function ExecutiveLayout({ children, title }) {
                         </div>
 
                         <div className="pt-6 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
-                            <p>&copy; {new Date().getFullYear()} DRAYBOND LIMITED. All rights reserved. Registered in England &amp; Wales.</p>
+                            <p>&copy; {new Date().getFullYear()} {company?.name || 'INCHWARD LIMITED'}. All rights reserved. Registered in England &amp; Wales.</p>
                             <p className="text-slate-400 font-mono">Confidential B2B Strategic Simulation Engine</p>
                         </div>
                     </div>

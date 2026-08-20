@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallet Top-Up Confirmation & Receipt — Macix AI</title>
+    <title>Official VAT Invoice & Board Resolution Unlocked — Macix AI</title>
     <style>
         body {
             margin: 0;
@@ -65,18 +65,18 @@
             font-weight: 800;
             margin: 0 0 16px 0;
         }
-        .amount-box {
+        .amount-badge {
             background: #0f172a;
-            border: 1px solid #059669;
+            border: 1px solid #1e293b;
             border-radius: 12px;
             padding: 20px;
             text-align: center;
             margin: 20px 0;
         }
-        .amount {
+        .amount-val {
             font-size: 32px;
             font-weight: 900;
-            color: #34d399;
+            color: #38bdf8;
             font-family: 'Courier New', monospace;
         }
         .receipt-table {
@@ -146,7 +146,7 @@
                 <td class="header">
                     <div class="logo-badge">MACIX AI</div>
                     <div style="font-size: 11px; color: #94a3b8; font-family: monospace; letter-spacing: 1px; text-transform: uppercase;">
-                        Financial Clearance &bull; INCHWARD LIMITED
+                        Official Board Deliberation &bull; INCHWARD LIMITED
                     </div>
                 </td>
             </tr>
@@ -154,49 +154,53 @@
             <!-- Content -->
             <tr>
                 <td class="content">
-                    <h2>Funds Successfully Added to Wallet</h2>
+                    <h2>Board Resolution Unlocked &amp; Paid</h2>
                     <p>
-                        Dear {{ $user->name }}, your prepaid balance has been updated with instant clearance. Funds are immediately available for board deliberations.
+                        Dear {{ $user->name }}, the Board of AI Advisors has completed deliberation on your strategic brief. Your prepaid wallet was debited, and the official B2B VAT Invoice is attached to this email.
                     </p>
 
-                    <div class="amount-box">
-                        <div style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Amount Credited</div>
-                        <div class="amount">+€{{ number_format($transaction->amount_eur, 2) }}</div>
-                        <div style="font-size: 12px; color: #cbd5e1; margin-top: 6px;">
-                            New Available Balance: <strong style="color: #34d399; font-family: monospace;">€{{ number_format($transaction->balance_after, 2) }}</strong>
+                    <div class="amount-badge">
+                        <div style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Service Fee Charged</div>
+                        <div class="amount-val">€{{ number_format((float)($transaction->amount_eur ?? $invoice->total_eur ?? 149), 2) }}</div>
+                        <div style="font-size: 11px; color: #38bdf8; margin-top: 4px; font-weight: 600;">
+                            {{ $transaction->service_name ?? $invoice->service_description ?? 'Strategic Board Deliberation' }}
                         </div>
                     </div>
 
                     <table class="receipt-table">
                         <tr>
                             <td class="label">Invoice Reference:</td>
-                            <td class="value">{{ $invoice->invoice_number }}</td>
+                            <td class="value">{{ $invoice->invoice_number ?? $transaction->reference }}</td>
                         </tr>
                         <tr>
-                            <td class="label">Transaction Reference:</td>
-                            <td class="value">{{ $transaction->reference }}</td>
+                            <td class="label">Session Title:</td>
+                            <td class="value" style="font-family: inherit;">{{ $session->title ?? 'Executive Strategic Dilemma' }}</td>
                         </tr>
                         <tr>
-                            <td class="label">Service Particulars:</td>
-                            <td class="value" style="font-family: inherit;">{{ $transaction->service_name }}</td>
+                            <td class="label">Remaining Wallet Balance:</td>
+                            <td class="value">€{{ number_format((float)$user->wallet_balance, 2) }}</td>
                         </tr>
                         <tr>
-                            <td class="label">Cleared Date:</td>
-                            <td class="value">{{ $transaction->created_at->format('d M Y, H:i') }} UTC</td>
+                            <td class="label">Tax (0% B2B Reverse Charge):</td>
+                            <td class="value">€0.00</td>
                         </tr>
                         <tr>
-                            <td class="label">VAT Rate (Reverse Charge):</td>
-                            <td class="value">0.00%</td>
+                            <td class="label">Date &amp; Time:</td>
+                            <td class="value">{{ now()->format('d M Y, H:i') }} UTC</td>
                         </tr>
                     </table>
 
                     <div class="attachment-alert">
                         <strong>📄 Official PDF Tax Invoice Attached:</strong><br>
-                        Your official UK VAT Invoice (<code>Invoice_{{ $invoice->invoice_number }}.pdf</code>) issued by <strong>INCHWARD LIMITED</strong> is attached to this email.
+                        Your official UK VAT Invoice from <strong>INCHWARD LIMITED</strong> has been rendered and attached to this email (<code>Invoice_{{ $invoice->invoice_number ?? 'INV' }}.pdf</code>).
                     </div>
 
                     <div class="btn-container">
-                        <a href="{{ url('/dashboard') }}" class="btn">Access Executive Dashboard</a>
+                        @if(isset($session->id))
+                            <a href="{{ url('/board/' . $session->id . '/resolution') }}" class="btn">View &amp; Download Resolution Minutes</a>
+                        @else
+                            <a href="{{ url('/dashboard') }}" class="btn">Access Executive Dashboard</a>
+                        @endif
                     </div>
                 </td>
             </tr>

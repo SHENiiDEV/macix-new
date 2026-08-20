@@ -8,7 +8,7 @@ export default function Terms() {
 
     return (
         <ExecutiveLayout>
-            <Head title="Terms of Service — Macix AI (DRAYBOND LIMITED)" />
+            <Head title="Terms of Service — Macix AI (INCHWARD LIMITED)" />
 
             <div className="max-w-4xl mx-auto space-y-8 my-6">
                 
@@ -31,16 +31,16 @@ export default function Terms() {
                     <Building2 className="w-6 h-6 text-amber-400 shrink-0 mt-1" />
                     <div className="text-xs text-slate-300 space-y-1">
                         <p className="font-bold text-white text-sm">
-                            Contracting Corporate Entity: {company?.name || 'DRAYBOND LIMITED'}
+                            Contracting Corporate Entity: {company?.name || 'INCHWARD LIMITED'}
                         </p>
                         <p>
-                            <strong>Company Number:</strong> {company?.number || '16021806'} &bull; Incorporated under the Laws of England &amp; Wales
+                            <strong>Company Number:</strong> {company?.number || '16021412'} &bull; Incorporated under the Laws of England &amp; Wales
                         </p>
                         <p>
                             <strong>Registered Office:</strong> {company?.address || 'Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, United Kingdom, CF31 1JF'}
                         </p>
                         <p>
-                            <strong>Official Desk:</strong> <a href="mailto:info@macix.co.uk" className="text-amber-400 hover:underline">info@macix.co.uk</a>
+                            <strong>Official Desk:</strong> <a href={`mailto:${company?.email || 'info@voltoria.co.uk'}`} className="text-amber-400 hover:underline">{company?.email || 'info@voltoria.co.uk'}</a>
                         </p>
                     </div>
                 </div>
@@ -51,7 +51,7 @@ export default function Terms() {
                     <section className="space-y-2">
                         <h2 className="text-base font-extrabold text-white">1. Scope of Services &amp; Advisory Simulation</h2>
                         <p>
-                            Macix AI ("Platform"), operated by <strong>DRAYBOND LIMITED</strong>, provides automated, artificial intelligence-powered multi-avatar business deliberation tools for founders, executives, and enterprise decision-makers. The outputs, including but not limited to Board Meeting Minutes, Persona Opinions, and 30-Day Action Plans, are algorithmic simulations generated for strategic decision-support.
+                            Macix AI ("Platform"), operated by <strong>{company?.name || 'INCHWARD LIMITED'}</strong>, provides automated, artificial intelligence-powered multi-avatar business deliberation tools for founders, executives, and enterprise decision-makers. The outputs, including but not limited to Board Meeting Minutes, Persona Opinions, and 30-Day Action Plans, are algorithmic simulations generated for strategic decision-support.
                         </p>
                     </section>
 

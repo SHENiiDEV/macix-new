@@ -10,12 +10,13 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeMail extends Mailable
+class WelcomeUserMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public User $user)
-    {
+    public function __construct(
+        public User $user
+    ) {
     }
 
     public function envelope(): Envelope
