@@ -54,10 +54,11 @@ class HandleInertiaRequests extends Middleware
                 'error' => fn () => $request->session()->get('error'),
             ],
             'company' => [
-                'name' => 'INCHWARD LIMITED',
-                'number' => '16021412',
-                'address' => 'Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, United Kingdom, CF31 1JF',
-                'email' => 'info@voltoria.co.uk',
+                'name' => env('COMPANY_NAME', 'CHANGE IT UP SERVICES LTD'),
+                'number' => env('COMPANY_NUMBER', '16107295'),
+                'address' => env('COMPANY_ADDRESS', '14 Broadway, Nottingham, United Kingdom, NG1 1PS'),
+                'email' => config('mail.from.address', env('MAIL_FROM_ADDRESS', 'support@fitninja.co.uk')),
+                'sla' => env('SUPPORT_SLA', '24-48 hours'),
                 'vat_note' => 'Reverse Charge / 0% VAT applicable for B2B cross-border services.',
             ],
         ];

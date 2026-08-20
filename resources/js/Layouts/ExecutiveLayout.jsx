@@ -53,13 +53,13 @@ export default function ExecutiveLayout({ children, title }) {
                 {/* Cookie Consent Floating Modal */}
                 <CookieConsent />
 
-                {/* Official B2B Footer with INCHWARD LIMITED credentials */}
-                <footer className="w-full border-t border-slate-800/80 bg-[#05070a] text-slate-400 text-xs py-10 mt-auto">
+                {/* Official B2B Footer with Dynamic Company credentials */}
+                <footer className="w-full border-t border-slate-800/80 bg-[#05070a] text-slate-400 text-xs py-12 mt-auto">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                             
-                            {/* Column 1: Brand & Entity */}
-                            <div className="md:col-span-2 space-y-3">
+                            {/* Column 1: Brand & Operating Entity */}
+                            <div className="space-y-3">
                                 <div className="flex items-center gap-2">
                                     <div className="w-6 h-6 rounded-lg bg-amber-500 flex items-center justify-center text-slate-950 font-black font-serif text-xs">
                                         M
@@ -67,20 +67,47 @@ export default function ExecutiveLayout({ children, title }) {
                                     <span className="font-extrabold text-white text-sm tracking-tight">MACIX AI</span>
                                     <span className="text-[10px] text-slate-500 font-mono">B2B SaaS</span>
                                 </div>
-                                <p className="text-slate-400 text-xs leading-relaxed max-w-md">
+                                <p className="text-slate-400 text-xs leading-relaxed">
                                     Enterprise-grade virtual Board of AI Advisors for founders, CEOs, and executive leaders. High-ticket strategic deliberation and resolution engine.
                                 </p>
-                                <div className="text-[11px] text-slate-500 leading-relaxed font-mono">
-                                    <strong>Operating Entity:</strong> {company?.name || 'INCHWARD LIMITED'}<br />
-                                    <strong>Company Number:</strong> {company?.number || '16021412'}<br />
-                                    <strong>Registered Address:</strong> {company?.address || 'Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, United Kingdom, CF31 1JF'}
+                                <div className="text-[11px] text-slate-500 leading-relaxed font-mono pt-1">
+                                    <strong>Operating Entity:</strong> {company?.name || 'CHANGE IT UP SERVICES LTD'}<br />
+                                    <strong>Company Number:</strong> {company?.number || '16107295'}<br />
+                                    <strong>Registered Office:</strong> {company?.address || '14 Broadway, Nottingham, United Kingdom, NG1 1PS'}
                                 </div>
                             </div>
 
-                            {/* Column 2: Legal Policies */}
+                            {/* Column 2: Architecture & Platform */}
+                            <div className="space-y-2">
+                                <h5 className="font-bold text-white text-xs uppercase tracking-wider">Platform &amp; Flow</h5>
+                                <ul className="space-y-2 text-xs text-slate-400">
+                                    <li>
+                                        <Link href="/how-it-works" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                                            <span>How It Works (Guide)</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/about" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                                            <span>About Corporate Entity</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/board/new" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                                            <span>Convene Board Meeting</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/billing" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                                            <span>Corporate Invoices (PDF)</span>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            {/* Column 3: Legal Compliance */}
                             <div className="space-y-2">
                                 <h5 className="font-bold text-white text-xs uppercase tracking-wider">Legal Compliance</h5>
-                                <ul className="space-y-1.5 text-xs text-slate-400">
+                                <ul className="space-y-2 text-xs text-slate-400">
                                     <li>
                                         <Link href="/terms" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
                                             <Scale className="w-3.5 h-3.5 text-slate-500" />
@@ -96,35 +123,44 @@ export default function ExecutiveLayout({ children, title }) {
                                     <li>
                                         <Link href="/refund" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
                                             <ShieldCheck className="w-3.5 h-3.5 text-slate-500" />
-                                            <span>B2B Refund Policy</span>
+                                            <span>B2B Refund Policy (14-Day)</span>
                                         </Link>
                                     </li>
                                 </ul>
                             </div>
 
-                            {/* Column 3: Contact & Invoicing */}
+                            {/* Column 4: Contact & SLA Desk */}
                             <div className="space-y-2">
-                                <h5 className="font-bold text-white text-xs uppercase tracking-wider">Executive Contact</h5>
+                                <h5 className="font-bold text-white text-xs uppercase tracking-wider">Executive Support Desk</h5>
                                 <p className="text-xs text-slate-400">
-                                    Dedicated B2B &amp; Invoicing Desk:
+                                    Dedicated Invoicing &amp; Operations Support:
                                 </p>
                                 <a 
-                                    href={`mailto:${company?.email || 'info@voltoria.co.uk'}`} 
+                                    href={`mailto:${company?.email || 'support@fitninja.co.uk'}`} 
                                     className="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-mono text-xs font-semibold"
                                 >
                                     <Mail className="w-3.5 h-3.5" />
-                                    <span>{company?.email || 'info@voltoria.co.uk'}</span>
+                                    <span>{company?.email || 'support@fitninja.co.uk'}</span>
                                 </a>
-                                <div className="pt-2 text-[10px] text-slate-500">
-                                    Invoices delivered with 0% Reverse Charge VAT automatically upon payment clearance.
+                                <div className="pt-2 text-[11px] text-emerald-400 font-mono flex items-center gap-1">
+                                    <Clock className="w-3 h-3" />
+                                    <span>Target SLA: {company?.sla || '24-48 hours'}</span>
+                                </div>
+                                <div className="pt-2">
+                                    <Link
+                                        href="/contact"
+                                        className="inline-flex items-center gap-1 text-xs text-slate-300 hover:text-white underline underline-offset-4"
+                                    >
+                                        <span>Dispatch Support Ticket &rarr;</span>
+                                    </Link>
                                 </div>
                             </div>
 
                         </div>
 
                         <div className="pt-6 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
-                            <p>&copy; {new Date().getFullYear()} {company?.name || 'INCHWARD LIMITED'}. All rights reserved. Registered in England &amp; Wales.</p>
-                            <p className="text-slate-400 font-mono">Confidential B2B Strategic Simulation Engine</p>
+                            <p>&copy; {new Date().getFullYear()} {company?.name || 'CHANGE IT UP SERVICES LTD'}. All rights reserved. Registered in England &amp; Wales.</p>
+                            <p className="text-slate-400 font-mono">Confidential B2B Strategic Simulation Engine &bull; Zero Data Retention</p>
                         </div>
                     </div>
                 </footer>

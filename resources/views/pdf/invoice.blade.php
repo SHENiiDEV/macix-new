@@ -221,6 +221,10 @@
         $clientCompany = $invoice->customer_company ?? $clientUser->company_name ?? null;
         $clientVat = $invoice->customer_vat ?? $clientUser->vat_number ?? null;
         $clientAddress = $invoice->customer_address ?? $clientUser->billing_address ?? 'United Kingdom';
+        $issuerName = env('COMPANY_NAME', 'CHANGE IT UP SERVICES LTD');
+        $issuerNumber = env('COMPANY_NUMBER', '16107295');
+        $issuerAddress = env('COMPANY_ADDRESS', '14 Broadway, Nottingham, United Kingdom, NG1 1PS');
+        $issuerEmail = config('mail.from.address', env('MAIL_FROM_ADDRESS', 'support@fitninja.co.uk'));
     @endphp
 
     <!-- Header -->
@@ -246,12 +250,12 @@
             <td>
                 <div class="party-card">
                     <div class="party-title">Issuer &amp; Merchant of Record</div>
-                    <div class="party-name">INCHWARD LIMITED</div>
+                    <div class="party-name">{{ $issuerName }}</div>
                     <div class="party-details">
-                        <strong>Company Number:</strong> 16021412<br>
-                        <strong>Registered Address:</strong> Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, CF31 1JF, United Kingdom<br>
+                        <strong>Company Number:</strong> {{ $issuerNumber }}<br>
+                        <strong>Registered Address:</strong> {{ $issuerAddress }}<br>
                         <strong>Jurisdiction:</strong> England &amp; Wales (UK)<br>
-                        <strong>Contact Desk:</strong> info@voltoria.co.uk
+                        <strong>Contact Desk:</strong> {{ $issuerEmail }}
                     </div>
                 </div>
             </td>
@@ -331,8 +335,8 @@
 
     <!-- Footer -->
     <div class="footer">
-        <strong>INCHWARD LIMITED</strong> &bull; Registered in England &amp; Wales &bull; Company No. 16021412<br>
-        Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, CF31 1JF, United Kingdom &bull; info@voltoria.co.uk<br>
+        <strong>{{ $issuerName }}</strong> &bull; Registered in England &amp; Wales &bull; Company No. {{ $issuerNumber }}<br>
+        {{ $issuerAddress }} &bull; {{ $issuerEmail }}<br>
         <em>14-day statutory right of refund applies to unused prepaid wallet balance in accordance with UK Consumer Contracts Regulations and B2B Terms of Service.</em>
     </div>
 

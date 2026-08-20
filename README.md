@@ -8,10 +8,10 @@ The system orchestrates multi-perspective strategic deliberations (*The Ruthless
 
 ## 🏛 Legal Entity & Corporate Invoicing
 All financial, invoicing, and legal infrastructure is strictly branded under:
-- **Operating Entity**: `INCHWARD LIMITED`
-- **Company Number**: `16021412`
-- **Registered Address**: `Academy House, 11 Dunraven Place, Bridgend, Mid Glamorgan, United Kingdom, CF31 1JF`
-- **Official Contact**: `info@voltoria.co.uk`
+- **Operating Entity**: `CHANGE IT UP SERVICES LTD`
+- **Company Number**: `16107295`
+- **Registered Address**: `14 Broadway, Nottingham, United Kingdom, NG1 1PS`
+- **Support Desk**: `support@fitninja.co.uk` (Target SLA: 24-48 hours)
 - **Tax Policy**: 0.00% VAT Reverse Charge for B2B
 
 ---

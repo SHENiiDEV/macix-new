@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BoardroomController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LegalController;
 use App\Http\Controllers\WalletController;
@@ -13,8 +14,13 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 Route::get('/', [BoardroomController::class, 'landing'])->name('landing');
+Route::get('/how-it-works', [ContactController::class, 'howItWorks'])->name('how-it-works');
+Route::get('/about', [ContactController::class, 'about'])->name('about');
+Route::get('/support', [ContactController::class, 'support'])->name('support');
+Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
-// Legal Policies (DRAYBOND LIMITED - UK Jurisdiction)
+// Legal Policies (UK Jurisdiction)
 Route::get('/terms', [LegalController::class, 'terms'])->name('legal.terms');
 Route::get('/privacy', [LegalController::class, 'privacy'])->name('legal.privacy');
 Route::get('/refund', [LegalController::class, 'refund'])->name('legal.refund');

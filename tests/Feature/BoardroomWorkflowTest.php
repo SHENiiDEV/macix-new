@@ -154,6 +154,26 @@ class BoardroomWorkflowTest extends TestCase
         $this->get('/refund')->assertOk();
     }
 
+    public function test_public_informational_pages_and_contact_form()
+    {
+        Mail::fake();
+
+        $this->get('/how-it-works')->assertOk();
+        $this->get('/about')->assertOk();
+        $this->get('/support')->assertOk();
+        $this->get('/contact')->assertOk();
+
+        $response = $this->post('/contact', [
+            'name' => 'Lord Vance',
+            'email' => 'vance@enterprise.co.uk',
+            'subject' => 'Enterprise Retainer Inquiry',
+            'message' => 'We wish to discuss custom persona weighting and private SLA support.',
+        ]);
+
+        $response->assertSessionHas('success');
+        Mail::assertSent(\App\Mail\ContactMessageMail::class);
+    }
+
     public function test_invoice_and_minutes_pdf_downloads()
     {
         $user = User::factory()->create(['wallet_balance' => 1000.00]);

@@ -15,7 +15,10 @@ import {
     Menu,
     X,
     Lock,
-    Globe
+    HelpCircle,
+    Mail,
+    Zap,
+    Info
 } from 'lucide-react';
 import TopUpModal from './TopUpModal';
 import CurrencyDropdown from './CurrencyDropdown';
@@ -23,7 +26,7 @@ import { useCurrency } from '../Context/CurrencyContext';
 
 export default function Navbar() {
     const { auth, company } = usePage().props;
-    const { formatPrice, currency, setCurrency, currentCurrency, currencies } = useCurrency();
+    const { formatPrice } = useCurrency();
     const [isTopUpOpen, setIsTopUpOpen] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -52,7 +55,7 @@ export default function Navbar() {
             <header className="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-[#07090e]/85 backdrop-blur-xl transition-all">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                     
-                    {/* Brand */}
+                    {/* Brand & Nav */}
                     <div className="flex items-center gap-6">
                         <Link href={auth?.user ? "/dashboard" : "/"} className="flex items-center gap-2.5 group">
                             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
@@ -69,57 +72,95 @@ export default function Navbar() {
                         </Link>
 
                         {/* Main Nav Links (Desktop) */}
-                        {auth?.user && (
-                            <nav className="hidden md:flex items-center gap-1 pl-4 border-l border-slate-800">
-                                <Link
-                                    href="/dashboard"
-                                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
-                                        window.location.pathname === '/dashboard' 
-                                            ? 'bg-slate-800 text-white' 
-                                            : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-                                    }`}
-                                >
-                                    <LayoutDashboard className="w-3.5 h-3.5" />
-                                    <span>Dashboard</span>
-                                </Link>
+                        <nav className="hidden lg:flex items-center gap-1 pl-4 border-l border-slate-800">
+                            {auth?.user ? (
+                                <>
+                                    <Link
+                                        href="/dashboard"
+                                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                                            window.location.pathname === '/dashboard' 
+                                                ? 'bg-slate-800 text-white' 
+                                                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                                        }`}
+                                    >
+                                        <LayoutDashboard className="w-3.5 h-3.5" />
+                                        <span>Dashboard</span>
+                                    </Link>
 
-                                <Link
-                                    href="/board/new"
-                                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
-                                        window.location.pathname === '/board/new' 
-                                            ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30' 
-                                            : 'text-slate-400 hover:text-amber-300 hover:bg-slate-800/50'
-                                    }`}
-                                >
-                                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                                    <span>New Session</span>
-                                </Link>
+                                    <Link
+                                        href="/board/new"
+                                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                                            window.location.pathname === '/board/new' 
+                                                ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30' 
+                                                : 'text-slate-400 hover:text-amber-300 hover:bg-slate-800/50'
+                                        }`}
+                                    >
+                                        <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                                        <span>New Session</span>
+                                    </Link>
 
-                                <Link
-                                    href="/board/history"
-                                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
-                                        window.location.pathname === '/board/history' 
-                                            ? 'bg-slate-800 text-white' 
-                                            : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-                                    }`}
-                                >
-                                    <History className="w-3.5 h-3.5" />
-                                    <span>Minutes Archive</span>
-                                </Link>
+                                    <Link
+                                        href="/board/history"
+                                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                                            window.location.pathname === '/board/history' 
+                                                ? 'bg-slate-800 text-white' 
+                                                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                                        }`}
+                                    >
+                                        <History className="w-3.5 h-3.5" />
+                                        <span>Minutes</span>
+                                    </Link>
 
-                                <Link
-                                    href="/billing"
-                                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
-                                        window.location.pathname === '/billing' 
-                                            ? 'bg-slate-800 text-white' 
-                                            : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-                                    }`}
-                                >
-                                    <CreditCard className="w-3.5 h-3.5" />
-                                    <span>Billing &amp; Invoices</span>
-                                </Link>
-                            </nav>
-                        )}
+                                    <Link
+                                        href="/billing"
+                                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                                            window.location.pathname === '/billing' 
+                                                ? 'bg-slate-800 text-white' 
+                                                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                                        }`}
+                                    >
+                                        <CreditCard className="w-3.5 h-3.5" />
+                                        <span>Billing</span>
+                                    </Link>
+                                </>
+                            ) : null}
+
+                            <Link
+                                href="/how-it-works"
+                                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                                    window.location.pathname === '/how-it-works' 
+                                        ? 'bg-slate-800 text-white' 
+                                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                                }`}
+                            >
+                                <Zap className="w-3.5 h-3.5 text-amber-400" />
+                                <span>How It Works</span>
+                            </Link>
+
+                            <Link
+                                href="/support"
+                                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                                    window.location.pathname === '/support' 
+                                        ? 'bg-slate-800 text-white' 
+                                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                                }`}
+                            >
+                                <HelpCircle className="w-3.5 h-3.5" />
+                                <span>Support</span>
+                            </Link>
+
+                            <Link
+                                href="/contact"
+                                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                                    window.location.pathname === '/contact' 
+                                        ? 'bg-slate-800 text-white' 
+                                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                                }`}
+                            >
+                                <Mail className="w-3.5 h-3.5" />
+                                <span>Contact</span>
+                            </Link>
+                        </nav>
                     </div>
 
                     {/* Right Actions (Desktop) */}
@@ -192,6 +233,15 @@ export default function Navbar() {
                                             >
                                                 <CreditCard className="w-3.5 h-3.5 text-sky-400" />
                                                 <span>Invoices &amp; Top-Up</span>
+                                            </Link>
+
+                                            <Link 
+                                                href="/about" 
+                                                onClick={() => setIsUserMenuOpen(false)}
+                                                className="flex items-center gap-2 px-3.5 py-2 text-slate-300 hover:bg-slate-800/60 hover:text-white"
+                                            >
+                                                <Info className="w-3.5 h-3.5 text-slate-400" />
+                                                <span>About Corporate</span>
                                             </Link>
 
                                             <Link 
@@ -277,7 +327,7 @@ export default function Navbar() {
                                 </div>
                                 <button
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/80 transition-colors"
+                                    className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/80 transition-colors cursor-pointer"
                                     aria-label="Close menu"
                                 >
                                     <X className="w-5 h-5" />
@@ -405,6 +455,45 @@ export default function Navbar() {
                                     </>
                                 )}
 
+                                {/* Main Guide & Support Links in Drawer */}
+                                <div className="pt-4 border-t border-slate-800/80 space-y-1">
+                                    <div className="px-3.5 py-1 text-[10px] uppercase font-bold text-slate-500 tracking-wider">
+                                        Resources &amp; Desk
+                                    </div>
+                                    <Link
+                                        href="/how-it-works"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-900/60"
+                                    >
+                                        <Zap className="w-3.5 h-3.5 text-amber-400" />
+                                        <span>How It Works</span>
+                                    </Link>
+                                    <Link
+                                        href="/about"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-900/60"
+                                    >
+                                        <Info className="w-3.5 h-3.5 text-sky-400" />
+                                        <span>About Us</span>
+                                    </Link>
+                                    <Link
+                                        href="/support"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-900/60"
+                                    >
+                                        <HelpCircle className="w-3.5 h-3.5 text-emerald-400" />
+                                        <span>Help Desk &amp; FAQ</span>
+                                    </Link>
+                                    <Link
+                                        href="/contact"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-900/60"
+                                    >
+                                        <Mail className="w-3.5 h-3.5 text-amber-400" />
+                                        <span>Contact Support</span>
+                                    </Link>
+                                </div>
+
                                 {/* Legal Section in Drawer */}
                                 <div className="pt-4 border-t border-slate-800/80 space-y-1">
                                     <div className="px-3.5 py-1 text-[10px] uppercase font-bold text-slate-500 tracking-wider">
@@ -452,8 +541,8 @@ export default function Navbar() {
                             )}
 
                             <div className="text-[10px] text-slate-500 text-center font-mono leading-tight">
-                                {company?.name || 'INCHWARD LIMITED'}<br />
-                                UK Co. No. {company?.number || '16021412'}
+                                {company?.name || 'CHANGE IT UP SERVICES LTD'}<br />
+                                UK Co. No. {company?.number || '16107295'} &bull; SLA {company?.sla || '24-48 hours'}
                             </div>
                         </div>
 
