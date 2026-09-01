@@ -57,7 +57,7 @@ export default function BillingIndex({ transactions, walletBalance }) {
                             Prepaid Wallet &amp; B2B Invoices
                         </h1>
                         <p className="text-xs text-slate-400 mt-1">
-                            Issued by <strong>{company?.name || 'DRAYBOND LIMITED'}</strong> &bull; Reverse Charge VAT 0.00%
+                            Issued by <strong>{company?.name || 'CHANGE IT UP SERVICES LTD'}</strong> &bull; Reverse Charge VAT 0.00%
                         </p>
                     </div>
 
@@ -88,7 +88,7 @@ export default function BillingIndex({ transactions, walletBalance }) {
                                 {formatPrice(walletBalance, 2)}
                             </div>
                             <p className="text-xs text-slate-300 mt-2">
-                                Funds are immediately available to convene Starter ({formatPrice(149)}), Pro ({formatPrice(499)}), or Enterprise ({formatPrice(1499)}) board sessions.
+                                Funds are immediately available to convene Starter ({formatPrice(559)}), Pro ({formatPrice(1799)}), or Enterprise ({formatPrice(5999)}) board sessions.
                             </p>
                         </div>
 
@@ -101,7 +101,7 @@ export default function BillingIndex({ transactions, walletBalance }) {
                                 <span>Add Funds</span>
                             </button>
                             <span className="text-[11px] text-slate-400 font-mono">
-                                Top-up presets: €149 &bull; €499 &bull; €1,499
+                                Presets: €559 &bull; €1,799 &bull; €3,499 &bull; €5,999
                             </span>
                         </div>
                     </div>
@@ -112,11 +112,10 @@ export default function BillingIndex({ transactions, walletBalance }) {
                             <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-400 mb-3">
                                 <Building2 className="w-5 h-5" />
                             </div>
-                            <h3 className="text-sm font-extrabold text-white">{company?.name || 'DRAYBOND LIMITED'}</h3>
+                            <h3 className="text-sm font-extrabold text-white">{company?.name || 'CHANGE IT UP SERVICES LTD'}</h3>
                             <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                                Company No. {company?.number || '16021806'}<br />
-                                Academy House, 11 Dunraven Place<br />
-                                Bridgend, Mid Glamorgan, CF31 1JF, UK
+                                Company No. {company?.number || '16107295'}<br />
+                                {company?.address || '14 Broadway, Nottingham, United Kingdom, NG1 1PS'}
                             </p>
                         </div>
 

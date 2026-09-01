@@ -29,7 +29,7 @@ export default function Support() {
     const faqs = [
         {
             q: "How does the Prepaid Executive Wallet work?",
-            a: "Macix AI operates on a pre-funded corporate wallet model. You deposit funds (e.g. Starter €149, Pro €499, or Enterprise Retainer €1,499) via instant payment clearance. Balance credits are instantly available and debited only when you convene a Boardroom deliberation session."
+            a: "Macix AI operates on a pre-funded corporate wallet model. You deposit funds (e.g. Starter €559, Pro €1,799, or Enterprise Retainer €5,999) via instant payment clearance. Balance credits are instantly available and debited only when you convene a Boardroom deliberation session."
         },
         {
             q: "What is your 14-Day Refund Guarantee policy?",

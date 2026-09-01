@@ -84,11 +84,11 @@ class BoardroomController extends Controller
 
         // Determine price
         $costs = [
-            'starter' => 149.00,
-            'pro' => 499.00,
-            'enterprise' => 1499.00,
+            'starter' => 559.00,
+            'pro' => 1799.00,
+            'enterprise' => 5999.00,
         ];
-        $costEur = $costs[$tier] ?? 149.00;
+        $costEur = $costs[$tier] ?? 559.00;
 
         // Check if balance is sufficient
         if ((float) $user->wallet_balance < $costEur) {

@@ -37,7 +37,7 @@ export default function Refund() {
                             <strong>14-Day Guarantee on Unused Wallet Funds:</strong> Clients may request a 100% refund of any unspent, positive balance remaining in their Macix AI Prepaid Wallet within fourteen (14) calendar days of the original top-up transaction.
                         </p>
                         <p className="text-amber-300/90 font-semibold">
-                            <strong>Non-Refundability of Conducted Board Sessions:</strong> Once a Boardroom deliberation has been convened ("Convene the Board" triggered) and funds have been debited for a Starter (€149), Pro (€499), or Enterprise (€1,499) session, the fee is <u>strictly non-refundable</u>. AI compute orchestration, multi-avatar synthesis, and official PDF minutes generation are instantaneous digital services irrevocably delivered upon execution.
+                            <strong>Non-Refundability of Conducted Board Sessions:</strong> Once a Boardroom deliberation has been convened ("Convene the Board" triggered) and funds have been debited for a Starter (€559), Pro (€1,799), or Enterprise (€5,999) session, the fee is <u>strictly non-refundable</u>. AI compute orchestration, multi-avatar synthesis, and official PDF minutes generation are instantaneous digital services irrevocably delivered upon execution.
                         </p>
                     </div>
                 </div>

@@ -161,7 +161,7 @@
 
                     <div class="amount-badge">
                         <div style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Service Fee Charged</div>
-                        <div class="amount-val">€{{ number_format((float)($transaction->amount_eur ?? $invoice->total_eur ?? 149), 2) }}</div>
+                        <div class="amount-val">€{{ number_format((float)($transaction->amount_eur ?? $invoice->total_eur ?? 559), 2) }}</div>
                         <div style="font-size: 11px; color: #38bdf8; margin-top: 4px; font-weight: 600;">
                             {{ $transaction->service_name ?? $invoice->service_description ?? 'Strategic Board Deliberation' }}
                         </div>

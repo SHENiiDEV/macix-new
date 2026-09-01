@@ -29,12 +29,12 @@ export default function NewSession({ initialTier = 'starter', walletBalance = 0 
     const [customAdvisor2, setCustomAdvisor2] = useState('B2B Enterprise Growth CMO');
 
     const tierCosts = {
-        starter: 149,
-        pro: 499,
-        enterprise: 1499,
+        starter: 559,
+        pro: 1799,
+        enterprise: 5999,
     };
 
-    const currentCost = tierCosts[selectedTier] || 149;
+    const currentCost = tierCosts[selectedTier] || 559;
     const isBalanceSufficient = walletBalance >= currentCost;
 
     const { data, setData, post, processing, errors } = useForm({
@@ -159,7 +159,7 @@ export default function NewSession({ initialTier = 'starter', walletBalance = 0 
                             >
                                 <div className="flex justify-between items-start">
                                     <span className="text-sm font-bold text-white">Starter Board</span>
-                                    <span className="text-base font-extrabold text-amber-400 font-mono">{formatPrice(149)}</span>
+                                    <span className="text-base font-extrabold text-amber-400 font-mono">{formatPrice(559)}</span>
                                 </div>
                                 <p className="text-[11px] text-slate-400 mt-2">
                                     Single strategic dilemma analyzed by the standard 4-advisor board + PDF Board Minutes.
@@ -180,10 +180,10 @@ export default function NewSession({ initialTier = 'starter', walletBalance = 0 
                                 </div>
                                 <div className="flex justify-between items-start">
                                     <span className="text-sm font-bold text-white">Pro Board</span>
-                                    <span className="text-base font-extrabold text-amber-400 font-mono">{formatPrice(499)}</span>
+                                    <span className="text-base font-extrabold text-amber-400 font-mono">{formatPrice(1799)}</span>
                                 </div>
                                 <p className="text-[11px] text-slate-400 mt-2">
-                                    Custom advisor personas + deep fiduciary stress-testing + 30-Day Action Roadmap.
+                                    2 custom advisor personas + deep fiduciary stress-testing + 30-Day Action Roadmap.
                                 </p>
                             </div>
 
@@ -198,7 +198,7 @@ export default function NewSession({ initialTier = 'starter', walletBalance = 0 
                             >
                                 <div className="flex justify-between items-start">
                                     <span className="text-sm font-bold text-white">Enterprise Retainer</span>
-                                    <span className="text-base font-extrabold text-amber-400 font-mono">{formatPrice(1499)}</span>
+                                    <span className="text-base font-extrabold text-amber-400 font-mono">{formatPrice(5999)}</span>
                                 </div>
                                 <p className="text-[11px] text-slate-400 mt-2">
                                     10 sessions / month + persistent decision history & financial statement ingestion.

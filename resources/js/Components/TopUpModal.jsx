@@ -3,7 +3,7 @@ import { useForm, usePage } from '@inertiajs/react';
 import { X, CreditCard, ShieldCheck, Zap, Building2, CheckCircle2, Lock } from 'lucide-react';
 import { useCurrency } from '../Context/CurrencyContext';
 
-export default function TopUpModal({ isOpen, onClose, defaultAmount = 499 }) {
+export default function TopUpModal({ isOpen, onClose, defaultAmount = 1799 }) {
     if (!isOpen) return null;
 
     const { company } = usePage().props;
@@ -22,9 +22,10 @@ export default function TopUpModal({ isOpen, onClose, defaultAmount = 499 }) {
     });
 
     const presets = [
-        { amount: 149, label: 'Starter Board', desc: '1 Full 4-Advisor Deliberation & Minutes' },
-        { amount: 499, label: 'Pro Board (Most Popular)', desc: 'Custom Personas + 30-Day Action Roadmap', popular: true },
-        { amount: 1499, label: 'Enterprise Retainer', desc: 'Financial Doc Uploads + 10 Sessions / Month' },
+        { amount: 559, label: 'Starter Board', desc: '1 Full 4-Advisor Deliberation & Minutes' },
+        { amount: 1799, label: 'Pro Board (Most Selected)', desc: 'Custom Personas + 30-Day Action Roadmap', popular: true },
+        { amount: 3499, label: 'Growth Executive Pack', desc: '2 Pro Sessions + Balance Sheet Ingestion' },
+        { amount: 5999, label: 'Enterprise Retainer', desc: 'Institutional Advisory + 10 Sessions / Month' },
     ];
 
     const handleSelectPreset = (amount) => {
@@ -69,7 +70,7 @@ export default function TopUpModal({ isOpen, onClose, defaultAmount = 499 }) {
                         </div>
                         <div>
                             <h3 className="text-lg font-bold tracking-tight text-white">Prepaid Wallet Top-Up</h3>
-                            <p className="text-xs text-slate-400">Official B2B Invoicing &bull; {company?.name || 'DRAYBOND LIMITED'}</p>
+                            <p className="text-xs text-slate-400">Official B2B Invoicing &bull; {company?.name || 'CHANGE IT UP SERVICES LTD'}</p>
                         </div>
                     </div>
                     <button 
@@ -85,7 +86,7 @@ export default function TopUpModal({ isOpen, onClose, defaultAmount = 499 }) {
                     {/* Preset Cards */}
                     <div className="space-y-2.5">
                         <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">Select Executive Package</label>
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
                             {presets.map((preset) => (
                                 <button
                                     key={preset.amount}

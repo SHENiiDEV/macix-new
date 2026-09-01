@@ -74,7 +74,7 @@ export default function Landing({ auth }) {
     const tiers = [
         {
             name: 'Starter Board',
-            price: 149,
+            price: 559,
             period: 'per session',
             desc: 'Ideal for resolving a single urgent strategic dilemma with the standard pool of 4 elite advisors.',
             features: [
@@ -82,7 +82,7 @@ export default function Landing({ auth }) {
                 'Chairman Executive Summary & Synthesis',
                 'Interactive Web Resolution Boardroom',
                 'Exportable High-Res PDF Board Minutes',
-                'Official VAT B2B Invoice from DRAYBOND LTD',
+                'Official VAT B2B Invoice from UK Registered Issuer',
             ],
             cta: 'Convene Starter Board',
             popular: false,
@@ -90,12 +90,12 @@ export default function Landing({ auth }) {
         },
         {
             name: 'Pro Board',
-            price: 499,
+            price: 1799,
             period: 'per session',
             desc: 'The most popular high-impact package for founders navigating complex pivots, layoffs, or M&A.',
             features: [
                 'All Starter Board Capabilities',
-                'Custom Advisor Personas (e.g. M&A Specialist, Growth CMO)',
+                '2 Custom Advisor Personas (e.g. M&A Specialist, Growth CMO)',
                 'Priority Multi-Perspective Reasoner Orchestration',
                 '30-Day Chronological Execution Action Plan',
                 'Fiduciary & Cap Table Impact Analysis',
@@ -107,16 +107,16 @@ export default function Landing({ auth }) {
         },
         {
             name: 'Enterprise Retainer',
-            price: 1499,
+            price: 5999,
             period: 'monthly retainer',
             desc: 'Continuous advisory suite with historical session memory and financial statement context ingestion.',
             features: [
-                '10 Deliberation Sessions per Month',
+                'Up to 10 Deliberation Sessions per Month',
                 'Full Financial & Cap Table Document Ingestion',
                 'Continuous Memory of Past Board Decisions',
                 'Dedicated Advisor Customization Workshop',
-                'Bespoke Reverse Charge Invoicing & SLA Guarantee',
-                'Direct Executive Support via info@macix.co.uk',
+                'Bespoke Reverse Charge Invoicing & 24-48h SLA Desk',
+                'Dedicated Account Director & Priority Support',
             ],
             cta: 'Initiate Enterprise Retainer',
             popular: false,
@@ -174,7 +174,7 @@ export default function Landing({ auth }) {
                 <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
                     <div className="flex items-center gap-1.5">
                         <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                        <span>Operated by <strong>DRAYBOND LIMITED</strong> (UK 16021806)</span>
+                        <span>Operated by <strong>{company?.name || 'CHANGE IT UP SERVICES LTD'}</strong> (UK {company?.number || '16107295'})</span>
                     </div>
                     <div className="flex items-center gap-1.5">
                         <Lock className="w-4 h-4 text-amber-400" />
@@ -347,14 +347,13 @@ export default function Landing({ auth }) {
                         <div>
                             <h4 className="text-base font-extrabold text-white">Institutional Billing &amp; UK Corporate Entity</h4>
                             <p className="text-xs text-slate-400 mt-0.5">
-                                Operating as <strong>DRAYBOND LIMITED</strong> &bull; Registered Company No. 16021806
+                                Operating as <strong>{company?.name || 'CHANGE IT UP SERVICES LTD'}</strong> &bull; Registered Company No. {company?.number || '16107295'}
                             </p>
                         </div>
                     </div>
                     <div className="text-xs text-slate-400 sm:text-right font-mono">
-                        <p>Academy House, 11 Dunraven Place</p>
-                        <p>Bridgend, Mid Glamorgan, UK, CF31 1JF</p>
-                        <a href="mailto:info@macix.co.uk" className="text-amber-400 hover:underline">info@macix.co.uk</a>
+                        <p>{company?.address || '14 Broadway, Nottingham, United Kingdom, NG1 1PS'}</p>
+                        <a href={`mailto:${company?.email || 'support@fitninja.co.uk'}`} className="text-amber-400 hover:underline">{company?.email || 'support@fitninja.co.uk'}</a>
                     </div>
                 </div>
             </section>

@@ -78,23 +78,23 @@ class BoardroomWorkflowTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)->post('/wallet/top-up', [
-            'amount' => 499.00,
+            'amount' => 1799.00,
             'payment_method' => 'card_instant',
         ]);
 
         $response->assertSessionHasNoErrors();
         $user->refresh();
 
-        $this->assertEquals(499.00, (float) $user->wallet_balance);
+        $this->assertEquals(1799.00, (float) $user->wallet_balance);
         $this->assertDatabaseHas('transactions', [
             'user_id' => $user->id,
             'type' => 'top_up',
-            'amount_eur' => 499.00,
-            'service_name' => 'Wallet Balance Top-Up (€499.00)',
+            'amount_eur' => 1799.00,
+            'service_name' => 'Wallet Balance Top-Up (€1,799.00)',
         ]);
         $this->assertDatabaseHas('invoices', [
             'user_id' => $user->id,
-            'total_eur' => 499.00,
+            'total_eur' => 1799.00,
             'vat_rate_percent' => 0.00,
             'status' => 'PAID',
         ]);
@@ -103,7 +103,7 @@ class BoardroomWorkflowTest extends TestCase
     public function test_insufficient_funds_blocks_convening_board()
     {
         $user = User::factory()->create([
-            'wallet_balance' => 50.00,
+            'wallet_balance' => 100.00,
         ]);
 
         $response = $this->actingAs($user)->post('/board/convene', [
@@ -120,7 +120,7 @@ class BoardroomWorkflowTest extends TestCase
         Mail::fake();
 
         $user = User::factory()->create([
-            'wallet_balance' => 500.00,
+            'wallet_balance' => 2000.00,
         ]);
 
         $response = $this->actingAs($user)->post('/board/convene', [
@@ -131,12 +131,12 @@ class BoardroomWorkflowTest extends TestCase
         ]);
 
         $user->refresh();
-        $this->assertEquals(1.00, (float) $user->wallet_balance); // 500 - 499 = 1.00
+        $this->assertEquals(201.00, (float) $user->wallet_balance); // 2000 - 1799 = 201.00
 
         $this->assertDatabaseHas('board_sessions', [
             'user_id' => $user->id,
             'tier' => 'pro',
-            'cost_eur' => 499.00,
+            'cost_eur' => 1799.00,
             'status' => 'completed',
         ]);
 
@@ -176,11 +176,11 @@ class BoardroomWorkflowTest extends TestCase
 
     public function test_invoice_and_minutes_pdf_downloads()
     {
-        $user = User::factory()->create(['wallet_balance' => 1000.00]);
+        $user = User::factory()->create(['wallet_balance' => 3000.00]);
         $otherUser = User::factory()->create(['wallet_balance' => 100.00]);
         
         // Top up to get invoice
-        $this->actingAs($user)->post('/wallet/top-up', ['amount' => 499.00]);
+        $this->actingAs($user)->post('/wallet/top-up', ['amount' => 1799.00]);
         $invoice = Invoice::where('user_id', $user->id)->first();
 
         // Download via /wallet/invoice/{id}

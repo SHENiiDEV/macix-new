@@ -29,7 +29,7 @@ class DocumentPaymentMail extends Mailable
 
     public function envelope(): Envelope
     {
-        $amount = $this->transaction->amount_eur ?? $this->invoice->total_eur ?? 149;
+        $amount = $this->transaction->amount_eur ?? $this->invoice->total_eur ?? 559;
         return new Envelope(
             from: new Address(config('mail.from.address', 'info@voltoria.co.uk'), config('mail.from.name', 'Macix AI | INCHWARD LIMITED')),
             subject: 'Macix AI — Official Invoice & Board Resolution Unlocked (€' . number_format((float)$amount, 2) . ')',
