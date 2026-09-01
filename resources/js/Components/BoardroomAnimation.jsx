@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Briefcase, Heart, Cpu, Flame, Crown, CheckCircle2 } from 'lucide-react';
+import Logo from './Logo';
 
 export default function BoardroomAnimation({ onComplete, duration = 6000 }) {
     const [activeStep, setActiveStep] = useState(0);
@@ -86,11 +87,11 @@ export default function BoardroomAnimation({ onComplete, duration = 6000 }) {
                 <div className="absolute inset-0 rounded-full border border-dashed border-slate-700/60 animate-spin" style={{ animationDuration: '30s' }}></div>
                 <div className="absolute inset-4 rounded-full border border-slate-800/80"></div>
 
-                {/* Central Chairman Hub */}
-                <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-amber-600/30 via-slate-900 to-slate-950 border-2 border-amber-500/50 flex flex-col items-center justify-center shadow-xl shadow-amber-500/10">
-                    <div className="pulse-node absolute inset-0 rounded-full bg-amber-500/20"></div>
-                    <Crown className="w-8 h-8 text-amber-400 animate-bounce" />
-                    <span className="text-[10px] uppercase tracking-wider font-extrabold text-amber-300 mt-1">Boardroom</span>
+                {/* Central Boardroom Hub: Macix AI Crown Emblem */}
+                <div className="relative z-10 p-2.5 rounded-3xl bg-slate-950/90 border-2 border-amber-500/60 shadow-2xl shadow-amber-500/25 flex flex-col items-center justify-center">
+                    <div className="pulse-node absolute inset-0 rounded-3xl bg-amber-500/20 pointer-events-none"></div>
+                    <Logo size="lg" showText={false} animated={true} href={null} />
+                    <span className="text-[9px] uppercase font-mono tracking-widest font-extrabold text-amber-300 mt-1.5">Hub</span>
                 </div>
 
                 {/* 4 Orbiting Advisors */}

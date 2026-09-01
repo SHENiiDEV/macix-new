@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import TopUpModal from './TopUpModal';
 import CurrencyDropdown from './CurrencyDropdown';
+import Logo from './Logo';
 import { useCurrency } from '../Context/CurrencyContext';
 
 export default function Navbar() {
@@ -57,19 +58,7 @@ export default function Navbar() {
                     
                     {/* Brand & Nav */}
                     <div className="flex items-center gap-6">
-                        <Link href={auth?.user ? "/dashboard" : "/"} className="flex items-center gap-2.5 group">
-                            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-                                <span className="font-serif text-lg tracking-tighter">M</span>
-                            </div>
-                            <div>
-                                <span className="text-base font-extrabold tracking-tight text-white flex items-center gap-1.5">
-                                    MACIX <span className="text-amber-400 text-xs px-1.5 py-0.5 rounded bg-amber-400/10 border border-amber-400/20">AI</span>
-                                </span>
-                                <span className="hidden sm:block text-[9px] uppercase tracking-widest text-slate-400 font-semibold">
-                                    Board of AI Advisors
-                                </span>
-                            </div>
-                        </Link>
+                        <Logo size="md" href={auth?.user ? "/dashboard" : "/"} />
 
                         {/* Main Nav Links (Desktop) */}
                         <nav className="hidden lg:flex items-center gap-1 pl-4 border-l border-slate-800">
@@ -319,12 +308,7 @@ export default function Navbar() {
                             
                             {/* Drawer Header */}
                             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-7 h-7 rounded-lg bg-amber-500 flex items-center justify-center text-slate-950 font-black text-xs">
-                                        M
-                                    </div>
-                                    <span className="font-extrabold text-white text-sm">MACIX AI</span>
-                                </div>
+                                <Logo size="sm" showSubtitle={false} href={null} />
                                 <button
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/80 transition-colors cursor-pointer"

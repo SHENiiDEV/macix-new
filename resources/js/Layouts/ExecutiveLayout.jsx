@@ -4,6 +4,8 @@ import { ShieldCheck, CheckCircle2, AlertCircle, X, Scale, Lock, Mail, Building2
 import Navbar from '../Components/Navbar';
 import CookieConsent from '../Components/CookieConsent';
 import OfflineBanner from '../Components/OfflineBanner';
+import GlobalLoadingScreen from '../Components/GlobalLoadingScreen';
+import Logo from '../Components/Logo';
 import { CurrencyProvider } from '../Context/CurrencyContext';
 
 export default function ExecutiveLayout({ children, title }) {
@@ -14,6 +16,9 @@ export default function ExecutiveLayout({ children, title }) {
         <CurrencyProvider>
             <div className="min-h-screen bg-[#07090e] text-slate-100 flex flex-col selection:bg-amber-500/30 selection:text-amber-200 relative">
                 
+                {/* Global Luxury Loading & Navigation Screen */}
+                <GlobalLoadingScreen />
+
                 {/* Offline Detection Banner */}
                 <OfflineBanner />
 
@@ -60,13 +65,7 @@ export default function ExecutiveLayout({ children, title }) {
                             
                             {/* Column 1: Brand & Operating Entity */}
                             <div className="space-y-3">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-6 h-6 rounded-lg bg-amber-500 flex items-center justify-center text-slate-950 font-black font-serif text-xs">
-                                        M
-                                    </div>
-                                    <span className="font-extrabold text-white text-sm tracking-tight">MACIX AI</span>
-                                    <span className="text-[10px] text-slate-500 font-mono">B2B SaaS</span>
-                                </div>
+                                <Logo size="sm" subtitle="B2B SaaS" href={null} />
                                 <p className="text-slate-400 text-xs leading-relaxed">
                                     Enterprise-grade virtual Board of AI Advisors for founders, CEOs, and executive leaders. High-ticket strategic deliberation and resolution engine.
                                 </p>

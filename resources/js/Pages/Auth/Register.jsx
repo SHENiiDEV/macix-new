@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm, Head, Link } from '@inertiajs/react';
+import { useForm, Head, Link, usePage } from '@inertiajs/react';
 import { 
     Lock, 
     Mail, 
@@ -19,8 +19,10 @@ import {
 import ExecutiveLayout from '../../Layouts/ExecutiveLayout';
 import { ALLOWED_COUNTRIES } from '../../constants/countries';
 import DatePicker from '../../Components/DatePicker';
+import Logo from '../../Components/Logo';
 
 export default function Register() {
+    const { company } = usePage().props;
     const { data, setData, post, processing, errors } = useForm({
         first_name: '',
         last_name: '',
@@ -51,15 +53,15 @@ export default function Register() {
                 <div className="bg-[#0b101c] border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl space-y-8">
                     
                     {/* Title & Badge */}
-                    <div className="text-center space-y-2">
-                        <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mx-auto">
-                            <Crown className="w-6 h-6" />
+                    <div className="text-center space-y-3">
+                        <div className="flex justify-center">
+                            <Logo size="lg" showText={false} href={null} />
                         </div>
                         <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                             Create Executive Account
                         </h1>
                         <p className="text-xs text-slate-400">
-                            Enterprise deliberation &amp; B2B advisory suite operated by <strong>DRAYBOND LIMITED</strong>
+                            Enterprise deliberation &amp; B2B advisory suite operated by <strong>{company?.name || 'CHANGE IT UP SERVICES LTD'}</strong>
                         </p>
                     </div>
 

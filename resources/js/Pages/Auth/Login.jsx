@@ -1,7 +1,8 @@
 import React from 'react';
 import { useForm, Head, Link } from '@inertiajs/react';
-import { Lock, Mail, ArrowRight, ShieldCheck, Crown } from 'lucide-react';
+import { Lock, Mail, ArrowRight, ShieldCheck } from 'lucide-react';
 import ExecutiveLayout from '../../Layouts/ExecutiveLayout';
+import Logo from '../../Components/Logo';
 
 export default function Login() {
     const { data, setData, post, processing, errors } = useForm({
@@ -22,9 +23,9 @@ export default function Login() {
             <div className="max-w-md mx-auto my-12">
                 <div className="bg-[#0b101c] border border-slate-800 rounded-3xl p-8 shadow-2xl space-y-6">
                     
-                    <div className="text-center space-y-2">
-                        <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mx-auto">
-                            <Crown className="w-6 h-6" />
+                    <div className="text-center space-y-3">
+                        <div className="flex justify-center">
+                            <Logo size="lg" showText={false} href={null} />
                         </div>
                         <h1 className="text-2xl font-extrabold text-white tracking-tight">
                             Executive Sign In
