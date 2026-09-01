@@ -76,10 +76,11 @@ export default function Landing({ auth }) {
             name: 'Starter Board',
             price: 559,
             period: 'per session',
+            badge: 'Entry Level',
             desc: 'Ideal for resolving a single urgent strategic dilemma with the standard pool of 4 elite advisors.',
             features: [
                 'Full 4-Advisor Multi-Perspective Deliberation',
-                'Chairman Executive Summary & Synthesis',
+                'The Chairman Executive Verdict & Synthesis',
                 'Interactive Web Resolution Boardroom',
                 'Exportable High-Res PDF Board Minutes',
                 'Official VAT B2B Invoice from UK Registered Issuer',
@@ -89,34 +90,87 @@ export default function Landing({ auth }) {
             tierKey: 'starter',
         },
         {
-            name: 'Pro Board',
+            name: 'Growth Strategic Board',
+            price: 999,
+            period: 'per session',
+            badge: 'Fast Track',
+            desc: 'Deep runway, burn rate, and pivot risk stress-testing for scaling founders.',
+            features: [
+                'Extended 4-Advisor Deep-Dive Deliberation',
+                '1 Specialized Advisor (e.g. Growth CMO / Unit Economics)',
+                'Quantified Downside Pre-Mortem Risk Matrix',
+                '14-Day Tactical Execution Roadmap',
+                'Direct PDF & Shareable Boardroom Link',
+            ],
+            cta: 'Convene Growth Board',
+            popular: false,
+            tierKey: 'starter',
+        },
+        {
+            name: 'Pro Executive Board',
             price: 1799,
             period: 'per session',
-            desc: 'The most popular high-impact package for founders navigating complex pivots, layoffs, or M&A.',
+            badge: 'Most Popular',
+            desc: 'The flagship institutional package for founders navigating complex pivots, layoffs, or M&A.',
             features: [
-                'All Starter Board Capabilities',
-                '2 Custom Advisor Personas (e.g. M&A Specialist, Growth CMO)',
-                'Priority Multi-Perspective Reasoner Orchestration',
-                '30-Day Chronological Execution Action Plan',
+                'All Growth Board Capabilities',
+                '2 Custom Specialist Personas (e.g. M&A Specialist, Turnaround CFO)',
+                'Priority Multi-Avatar Reasoning Engine',
+                '30-Day Chronological Milestone Action Plan',
                 'Fiduciary & Cap Table Impact Analysis',
-                'Direct PDF & Shareable Boardroom Link',
+                'Instant UK VAT Invoice Clearance',
             ],
             cta: 'Convene Pro Board',
             popular: true,
             tierKey: 'pro',
         },
         {
-            name: 'Enterprise Retainer',
+            name: 'Quarterly Governance Pack',
+            price: 2899,
+            period: '3-session pack',
+            badge: 'Best Value',
+            desc: 'Pre-funded quarterly pass for continuous strategic board governance and scenario testing.',
+            features: [
+                '3 Full Pro Deliberation Sessions (Save €2,498)',
+                'Balance Sheet & Financial Context Ingestion',
+                'Cross-Session Memory & Decision Tracking',
+                'Multi-Persona Weighting Customization',
+                'Dedicated Invoicing Account Support',
+            ],
+            cta: 'Get Quarterly Bundle',
+            popular: false,
+            tierKey: 'pro',
+        },
+        {
+            name: 'M&A & Diligence Sprint',
+            price: 4299,
+            period: 'deal sprint',
+            badge: 'Deal Suite',
+            desc: 'Intensive scenario simulation for major acquisitions, down-rounds, or hostile negotiations.',
+            features: [
+                'Unlimited Persona Deliberation Rounds for 1 Deal',
+                'Data Room & Financial Model Document Ingestion',
+                'Red-Team Hostile Counter-Tactic Modeling',
+                'Board of Directors Legal Synthesis Pack',
+                'Expedited 24-Hour Ticket SLA Support',
+            ],
+            cta: 'Initiate Deal Sprint',
+            popular: false,
+            tierKey: 'enterprise',
+        },
+        {
+            name: 'Enterprise Sovereign Retainer',
             price: 5999,
             period: 'monthly retainer',
-            desc: 'Continuous advisory suite with historical session memory and financial statement context ingestion.',
+            badge: 'Institutional Tier',
+            desc: 'Continuous institutional advisory suite with dedicated persona tuning and permanent memory.',
             features: [
-                'Up to 10 Deliberation Sessions per Month',
-                'Full Financial & Cap Table Document Ingestion',
-                'Continuous Memory of Past Board Decisions',
-                'Dedicated Advisor Customization Workshop',
-                'Bespoke Reverse Charge Invoicing & 24-48h SLA Desk',
-                'Dedicated Account Director & Priority Support',
+                'Up to 10 Executive Deliberations per Month',
+                'Full Financial, Legal & Pitch Deck Context Ingestion',
+                'Continuous Historical Memory across All Board Decisions',
+                'Bespoke Persona Tuning & Weighting Workshop',
+                'Dedicated Account Director & VIP 24-48h SLA Desk',
+                'Multi-Seat Executive Team Access',
             ],
             cta: 'Initiate Enterprise Retainer',
             popular: false,
@@ -284,41 +338,47 @@ export default function Landing({ auth }) {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 max-w-7xl mx-auto">
                     {tiers.map((tier) => (
                         <div
                             key={tier.name}
-                            className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 ${
+                            className={`relative rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 ${
                                 tier.popular
-                                    ? 'bg-[#0d1322] border-2 border-amber-500/80 shadow-2xl shadow-amber-500/10 scale-102 z-10'
+                                    ? 'bg-[#0d1322] border-2 border-amber-500/80 shadow-2xl shadow-amber-500/10 scale-[1.02] z-10'
                                     : 'bg-[#0a0e1a] border border-slate-800 hover:border-slate-700'
                             }`}
                         >
-                            {tier.popular && (
+                            {tier.popular ? (
                                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 font-extrabold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full shadow-md">
                                     Most Selected by Founders
                                 </div>
-                            )}
-
-                            <div className="mb-6">
-                                <h3 className="text-xl font-bold text-white">{tier.name}</h3>
-                                <p className="text-xs text-slate-400 mt-2 min-h-[36px]">{tier.desc}</p>
-                                <div className="mt-5 flex items-baseline gap-1">
-                                    <span className="text-4xl font-extrabold text-white">{formatPrice(tier.price)}</span>
-                                    <span className="text-xs text-slate-400 font-mono">/ {tier.period}</span>
+                            ) : tier.badge ? (
+                                <div className="absolute -top-3 left-6 bg-slate-900 border border-slate-700/80 text-amber-400/90 font-mono text-[9px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full">
+                                    {tier.badge}
                                 </div>
-                            </div>
+                            ) : null}
 
-                            <div className="space-y-3 mb-8 flex-grow">
-                                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Included Deliverables:</span>
-                                <ul className="space-y-2.5 text-xs text-slate-300">
-                                    {tier.features.map((feature, idx) => (
-                                        <li key={idx} className="flex items-start gap-2.5">
-                                            <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${tier.popular ? 'text-amber-400' : 'text-slate-400'}`} />
-                                            <span>{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                            <div>
+                                <div className="mb-6">
+                                    <h3 className="text-xl font-bold text-white">{tier.name}</h3>
+                                    <p className="text-xs text-slate-400 mt-2 min-h-[36px] leading-relaxed">{tier.desc}</p>
+                                    <div className="mt-5 flex items-baseline gap-1">
+                                        <span className="text-3xl sm:text-4xl font-extrabold text-white">{formatPrice(tier.price)}</span>
+                                        <span className="text-xs text-slate-400 font-mono">/ {tier.period}</span>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-3 mb-8">
+                                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Included Deliverables:</span>
+                                    <ul className="space-y-2.5 text-xs text-slate-300">
+                                        {tier.features.map((feature, idx) => (
+                                            <li key={idx} className="flex items-start gap-2.5">
+                                                <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${tier.popular ? 'text-amber-400' : 'text-slate-400'}`} />
+                                                <span>{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
 
                             <Link
