@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Head } from '@inertiajs/react';
+import { Link, Head, usePage } from '@inertiajs/react';
 import { 
     Sparkles, 
     Briefcase, 
@@ -20,7 +20,8 @@ import {
 import ExecutiveLayout from '../Layouts/ExecutiveLayout';
 import { useCurrency } from '../Context/CurrencyContext';
 
-export default function Landing({ auth }) {
+export default function Landing() {
+    const { auth, company } = usePage().props;
     const { formatPrice } = useCurrency();
     const [selectedTab, setSelectedTab] = useState('investor');
 
