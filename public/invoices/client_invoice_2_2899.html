@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INV-2026-MCX289</title>
+    <style>
+        @page {
+            size: a4 portrait;
+            margin: 25mm 20mm 20mm 20mm;
+        }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #111827;
+            font-size: 12.5px;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+        }
+        .header-container {
+            margin-bottom: 25px;
+            border-bottom: 2px solid #111827;
+            padding-bottom: 18px;
+        }
+        .doc-title {
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            color: #111827;
+            margin: 0 0 4px 0;
+        }
+        .doc-subtitle {
+            font-size: 11.5px;
+            color: #6b7280;
+            margin: 0;
+        }
+        .meta-grid {
+            margin-top: 16px;
+        }
+        .meta-item {
+            margin-bottom: 4px;
+            font-size: 12px;
+        }
+        .meta-label {
+            color: #6b7280;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            width: 120px;
+        }
+        .meta-value {
+            font-weight: 600;
+            color: #111827;
+        }
+        .status-tag {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .parties-grid {
+            width: 100%;
+            margin-bottom: 25px;
+        }
+        .party-col {
+            width: 48%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .party-title {
+            font-size: 9.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #6b7280;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 3px;
+        }
+        .party-name {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 3px;
+        }
+        .party-details {
+            color: #4b5563;
+            font-size: 11.5px;
+            line-height: 1.45;
+        }
+        .line-items {
+            margin-top: 15px;
+            margin-bottom: 25px;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 16px 0;
+        }
+        .line-item-header {
+            font-size: 9.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #6b7280;
+            margin-bottom: 10px;
+        }
+        .item-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 3px;
+        }
+        .item-description {
+            font-size: 11.5px;
+            color: #4b5563;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .item-amount-row {
+            font-size: 12px;
+            color: #111827;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        .totals-block {
+            margin-top: 15px;
+            text-align: right;
+        }
+        .totals-row {
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        .totals-label {
+            display: inline-block;
+            width: 170px;
+            color: #6b7280;
+        }
+        .totals-val {
+            display: inline-block;
+            width: 110px;
+            font-weight: 600;
+            color: #111827;
+            text-align: right;
+        }
+        .grand-total {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid #111827;
+            font-size: 15px;
+            font-weight: 800;
+            color: #111827;
+        }
+        .grand-total .totals-val {
+            font-size: 16.5px;
+            color: #111827;
+        }
+        .note-block {
+            margin-top: 25px;
+            padding: 12px 14px;
+            background: #f9fafb;
+            border-left: 3px solid #111827;
+            font-size: 11px;
+            color: #374151;
+            line-height: 1.45;
+        }
+        .footer-note {
+            margin-top: 35px;
+            font-size: 10px;
+            color: #9ca3af;
+            text-align: center;
+            border-top: 1px solid #f3f4f6;
+            padding-top: 12px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header-container">
+        <div class="doc-title">CLIENT INVOICE</div>
+        <div class="doc-subtitle">CHANGE IT UP SERVICES LTD &bull; Official Business Document</div>
+        
+        <div class="meta-grid">
+            <div class="meta-item">
+                <span class="meta-label">Invoice Reference:</span>
+                <span class="meta-value">INV-2026-MCX289</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Issue Date:</span>
+                <span class="meta-value">28 August 2026</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Payment Status:</span>
+                <span class="status-tag">PAID &amp; SETTLED</span>
+            </div>
+                        <div class="meta-item">
+                <span class="meta-label">PO / Order Ref:</span>
+                <span class="meta-value">PO-MRD-2026-42</span>
+            </div>
+                    </div>
+    </div>
+
+    <!-- Parties Grid (Sender & Recipient) -->
+    <div class="parties-grid">
+        <div class="party-col">
+            <div class="party-title">FROM (ISSUER / SUPPLIER)</div>
+            <div class="party-name">CHANGE IT UP SERVICES LTD</div>
+            <div class="party-details">
+                                    14 Broadway, Nottingham<br />
+United Kingdom, NG1 1PS<br>
+                                                    Company No: 16107295<br>
+                                                    VAT Reg: GB 419 802 114<br>
+                                                    Website: https://macix.co.uk<br>
+                                                    Email: billing@macix.co.uk
+                            </div>
+        </div>
+        <div class="party-col" style="margin-left: 3%;">
+            <div class="party-title">TO (BILLED CLIENT)</div>
+            <div class="party-name">Meridian Global Partners Ltd</div>
+            <div class="party-details">
+                                    100 Bishopsgate, Level 18<br />
+London, EC2N 4AG, United Kingdom<br>
+                                                    Company No: 09842177<br>
+                                                    VAT / Tax ID: GB 220 894 103<br>
+                                                    Email: finance@meridianglobal.co.uk<br>
+                                                    Project: Macix AI Quarterly Governance — https://macix.co.uk
+                            </div>
+        </div>
+    </div>
+
+    <!-- Line Items Section -->
+    <div class="line-items">
+        <div class="line-item-header">DESCRIPTION OF SERVICES / DELIVERABLES</div>
+                    <div style="margin-bottom: 12px;">
+                <div class="item-name">Macix AI — Quarterly Governance Executive Pack (3-Session Suite)</div>
+                <div class="item-description">Quarterly institutional strategic deliberation suite with balance sheet context ingestion, custom persona weighting, and formal board meeting minutes export.</div>
+                <div class="item-amount-row">
+                    Qty: 1 &bull; Amount: €2,899.00
+                </div>
+            </div>
+            </div>
+
+    <!-- Summary & Totals -->
+    <div class="totals-block">
+        <div class="totals-row">
+            <span class="totals-label">Subtotal:</span>
+            <span class="totals-val">€2,899.00</span>
+        </div>
+        <div class="totals-row">
+            <span class="totals-label">VAT / Tax (0.00% (Reverse Charge)):</span>
+            <span class="totals-val">€0.00</span>
+        </div>
+        <div class="totals-row grand-total">
+            <span class="totals-label">Total Paid (EUR):</span>
+            <span class="totals-val">€2,899.00</span>
+        </div>
+    </div>
+
+    <!-- Notes & Settlement Terms -->
+    <div class="note-block">
+        <strong>Notes &amp; Compliance Terms:</strong><br>
+        Settled via Corporate Card clearance. 0.00% VAT applied under B2B Reverse Charge rules for electronic services.
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-note">
+        CHANGE IT UP SERVICES LTD &bull; Registered in England &amp; Wales &bull; https://macix.co.uk<br>
+        Thank you for your business.
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HM-2026-9082</title>
+    <style>
+        @page {
+            size: a4 portrait;
+            margin: 25mm 20mm 20mm 20mm;
+        }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #111827;
+            font-size: 12.5px;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+        }
+        .header-container {
+            margin-bottom: 25px;
+            border-bottom: 2px solid #111827;
+            padding-bottom: 18px;
+        }
+        .doc-title {
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            color: #111827;
+            margin: 0 0 4px 0;
+        }
+        .doc-subtitle {
+            font-size: 11.5px;
+            color: #6b7280;
+            margin: 0;
+        }
+        .meta-grid {
+            margin-top: 16px;
+        }
+        .meta-item {
+            margin-bottom: 4px;
+            font-size: 12px;
+        }
+        .meta-label {
+            color: #6b7280;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            width: 120px;
+        }
+        .meta-value {
+            font-weight: 600;
+            color: #111827;
+        }
+        .status-tag {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .parties-grid {
+            width: 100%;
+            margin-bottom: 25px;
+        }
+        .party-col {
+            width: 48%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .party-title {
+            font-size: 9.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #6b7280;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 3px;
+        }
+        .party-name {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 3px;
+        }
+        .party-details {
+            color: #4b5563;
+            font-size: 11.5px;
+            line-height: 1.45;
+        }
+        .line-items {
+            margin-top: 15px;
+            margin-bottom: 25px;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 16px 0;
+        }
+        .line-item-header {
+            font-size: 9.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #6b7280;
+            margin-bottom: 10px;
+        }
+        .item-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 3px;
+        }
+        .item-description {
+            font-size: 11.5px;
+            color: #4b5563;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .item-amount-row {
+            font-size: 12px;
+            color: #111827;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        .totals-block {
+            margin-top: 15px;
+            text-align: right;
+        }
+        .totals-row {
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        .totals-label {
+            display: inline-block;
+            width: 170px;
+            color: #6b7280;
+        }
+        .totals-val {
+            display: inline-block;
+            width: 110px;
+            font-weight: 600;
+            color: #111827;
+            text-align: right;
+        }
+        .grand-total {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid #111827;
+            font-size: 15px;
+            font-weight: 800;
+            color: #111827;
+        }
+        .grand-total .totals-val {
+            font-size: 16.5px;
+            color: #111827;
+        }
+        .note-block {
+            margin-top: 25px;
+            padding: 12px 14px;
+            background: #f9fafb;
+            border-left: 3px solid #111827;
+            font-size: 11px;
+            color: #374151;
+            line-height: 1.45;
+        }
+        .footer-note {
+            margin-top: 35px;
+            font-size: 10px;
+            color: #9ca3af;
+            text-align: center;
+            border-top: 1px solid #f3f4f6;
+            padding-top: 12px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header-container">
+        <div class="doc-title">SUPPLIER INVOICE</div>
+        <div class="doc-subtitle">HUMAN MADE LIMITED &bull; Official Business Document</div>
+        
+        <div class="meta-grid">
+            <div class="meta-item">
+                <span class="meta-label">Invoice Reference:</span>
+                <span class="meta-value">HM-2026-9082</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Issue Date:</span>
+                <span class="meta-value">25 August 2026</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Payment Status:</span>
+                <span class="status-tag">PAID &amp; SETTLED</span>
+            </div>
+                        <div class="meta-item">
+                <span class="meta-label">PO / Order Ref:</span>
+                <span class="meta-value">PO-CIU-2026-002</span>
+            </div>
+                    </div>
+    </div>
+
+    <!-- Parties Grid (Sender & Recipient) -->
+    <div class="parties-grid">
+        <div class="party-col">
+            <div class="party-title">FROM (ISSUER / SUPPLIER)</div>
+            <div class="party-name">HUMAN MADE LIMITED</div>
+            <div class="party-details">
+                                    81 Dale Road, Matlock<br />
+Derbyshire, DE4 3LU, United Kingdom<br>
+                                                    Company No: 07238671<br>
+                                                    VAT Reg: GB 992 486 312<br>
+                                                    Website: https://humanmade.com<br>
+                                                    Email: billing@humanmade.com
+                            </div>
+        </div>
+        <div class="party-col" style="margin-left: 3%;">
+            <div class="party-title">TO (BILLED CLIENT)</div>
+            <div class="party-name">CHANGE IT UP SERVICES LTD</div>
+            <div class="party-details">
+                                    14 Broadway, Nottingham<br />
+United Kingdom, NG1 1PS<br>
+                                                    Company No: 16107295<br>
+                                                                    Email: support@fitninja.co.uk<br>
+                                                    Project: https://macix.co.uk — AI Deliberation Engine &amp; Invoicing (Milestone 2)
+                            </div>
+        </div>
+    </div>
+
+    <!-- Line Items Section -->
+    <div class="line-items">
+        <div class="line-item-header">DESCRIPTION OF SERVICES / DELIVERABLES</div>
+                    <div style="margin-bottom: 12px;">
+                <div class="item-name">Multi-Avatar AI Pipeline, Invoicing Engine &amp; Production Launch (Milestone 2)</div>
+                <div class="item-description">Neural deliberation orchestration, real-time telemetry streaming, automated PDF invoice generation, transactional email pipeline, security hardening, and final production release on https://macix.co.uk.</div>
+                <div class="item-amount-row">
+                    Qty: 1 &bull; Amount: £17,000.00
+                </div>
+            </div>
+            </div>
+
+    <!-- Summary & Totals -->
+    <div class="totals-block">
+        <div class="totals-row">
+            <span class="totals-label">Subtotal:</span>
+            <span class="totals-val">£17,000.00</span>
+        </div>
+        <div class="totals-row">
+            <span class="totals-label">VAT / Tax (0.00% (B2B Standard Exemption)):</span>
+            <span class="totals-val">£0.00</span>
+        </div>
+        <div class="totals-row grand-total">
+            <span class="totals-label">Total Paid (GBP):</span>
+            <span class="totals-val">£17,000.00</span>
+        </div>
+    </div>
+
+    <!-- Notes & Settlement Terms -->
+    <div class="note-block">
+        <strong>Notes &amp; Compliance Terms:</strong><br>
+        Milestone 2 final project completion and handover approved. Settled in full via BACS Direct Bank Transfer to Human Made Limited account.
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-note">
+        HUMAN MADE LIMITED &bull; Registered in England &amp; Wales &bull; https://humanmade.com<br>
+        Thank you for your business.
+    </div>
+
+</body>
+</html>

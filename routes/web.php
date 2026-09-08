@@ -62,3 +62,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/invoices/{id}/download', [InvoiceController::class, 'download'])->name('invoices.download');
     Route::get('/board/{id}/export-minutes', [InvoiceController::class, 'exportMinutes'])->name('board.exportMinutes');
 });
+
+// Public Custom Invoices (Client & Supplier)
+Route::get('/invoices/doc/{filename}', function ($filename) {
+    $path = public_path("invoices/{$filename}");
+    if (!file_exists($path)) {
+        abort(404);
+    }
+    $mime = str_ends_with($filename, '.pdf') ? 'application/pdf' : 'text/html';
+    return response()->file($path, ['Content-Type' => $mime]);
+});
