@@ -45,10 +45,9 @@ $htmlClient1 = View::make('pdf.wallet_invoice', [
     ],
 ])->render();
 
-file_put_contents("$outDir/client_invoice_1_999.html", $htmlClient1);
 $pdfClient1 = Pdf::loadHTML($htmlClient1)->setPaper('a4', 'portrait');
 file_put_contents("$outDir/client_invoice_1_999.pdf", $pdfClient1->output());
-echo "Generated Client Invoice 1 (€999.00) in Macix AI style.\n";
+echo "Generated Client Invoice 1 (€999.00) PDF in Macix AI style.\n";
 
 
 // -------------------------------------------------------------
@@ -82,10 +81,9 @@ $htmlClient2 = View::make('pdf.wallet_invoice', [
     ],
 ])->render();
 
-file_put_contents("$outDir/client_invoice_2_2899.html", $htmlClient2);
 $pdfClient2 = Pdf::loadHTML($htmlClient2)->setPaper('a4', 'portrait');
 file_put_contents("$outDir/client_invoice_2_2899.pdf", $pdfClient2->output());
-echo "Generated Client Invoice 2 (€2,899.00) in Macix AI style.\n";
+echo "Generated Client Invoice 2 (€2,899.00) PDF in Macix AI style.\n";
 
 
 // -------------------------------------------------------------
@@ -126,10 +124,9 @@ $supplierData1 = [
 ];
 
 $htmlSupplier1 = View::make('pdf.simple_invoice', $supplierData1)->render();
-file_put_contents("$outDir/supplier_invoice_1_13500.html", $htmlSupplier1);
 $pdfSupplier1 = Pdf::loadHTML($htmlSupplier1)->setPaper('a4', 'portrait');
 file_put_contents("$outDir/supplier_invoice_1_13500.pdf", $pdfSupplier1->output());
-echo "Generated Supplier Invoice 1 (£13,500.00).\n";
+echo "Generated Supplier Invoice 1 (£13,500.00) PDF.\n";
 
 
 // -------------------------------------------------------------
@@ -170,9 +167,8 @@ $supplierData2 = [
 ];
 
 $htmlSupplier2 = View::make('pdf.simple_invoice', $supplierData2)->render();
-file_put_contents("$outDir/supplier_invoice_2_17000.html", $htmlSupplier2);
 $pdfSupplier2 = Pdf::loadHTML($htmlSupplier2)->setPaper('a4', 'portrait');
 file_put_contents("$outDir/supplier_invoice_2_17000.pdf", $pdfSupplier2->output());
-echo "Generated Supplier Invoice 2 (£17,000.00).\n";
+echo "Generated Supplier Invoice 2 (£17,000.00) PDF.\n";
 
-echo "All 4 invoices generated successfully!\n";
+echo "All 4 PDF invoices generated successfully!\n";
